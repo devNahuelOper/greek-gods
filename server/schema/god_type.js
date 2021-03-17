@@ -28,7 +28,8 @@ const GodType = new GraphQLObjectType({
       resolve(parentValue) {
         return God.findById(parentValue.id)
           .populate("emblems")
-          .then((god) => [god.emblems]);
+          .then((god) => [god.emblems])
+          .catch((err) => console.log(err));
       },
     },
     parents: {
