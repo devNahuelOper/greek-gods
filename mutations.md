@@ -9,11 +9,15 @@ fragment FindAbode on AbodeType {
   coordinates
 }
 
+fragment FindEmblem on EmblemType {
+  name
+  id
+}
+
 
 query fetchGods{
   gods {
-    id
-    name
+   ...FindGod
     emblems {
       id
       name
@@ -26,8 +30,7 @@ query fetchGods{
 
 query fetchGodRelatives {
   gods {
-    id
-    name
+   ...FindGod
     parents {
     	...FindGod
     }
@@ -42,77 +45,63 @@ query fetchGodRelatives {
 
 query fetchGod {
   god(id: "5c98e94dd5a3ca0de10a1501") {
-    id
-    name
+    ...FindGod
     type
     description
-    domains,
+    domains
     abode {
-      name
+      ...FindAbode
     }
     emblems {
-      id
-      name
+     ...FindEmblem
     }
     parents {
-      id
-      name
+      ...FindGod
       children {
-        name
+        ...FindGod
       }
     }
     children {
-      id
-      name
+     ...FindGod
     }
     siblings {
-      id
-      name
+     ...FindGod
     }
   }
 }
 
 query fetchEmblems {
   emblems {
-    id
-    name
+    ...FindEmblem
     gods {
-      id
-      name
-    }
+    	...FindGod
+  	}
   }
 }
 
 query fetchEmblem {
   emblem(id: "5c98e9ded5a3ca0de10a1507") {
-    name
+    ...FindEmblem
     gods {
-      id
-      name
+     ...FindGod
     }
   }
 }
 
 query fetchAbodes {
   abodes {
-    id
-    name
-    coordinates 
+    ...FindAbode
     gods {
-      id
-      name
+      ...FindGod
     }
   }
 }
 
 query fetchAbode {
   abode(id: "5c98eae6d5a3ca0de10a151b") {
-    id
-    name
-    coordinates
+   ...FindAbode
     gods {
-      id
-      name
+      ...FindGod
       description
     }
 	}
@@ -120,8 +109,7 @@ query fetchAbode {
 
 mutation createGod {
   newGod(name: "Kratom", type: "Powdery", description: "Ooh kratora, ooh ooh kratora!") {
-    id
-    name
+    ...FindGod
     type
     description
   }
@@ -129,37 +117,32 @@ mutation createGod {
 
 mutation removeGod {
    deleteGod(id: "60525ea4f66b18d51c9a8d9b") {
-    id
-    name
+   ...FindGod
   }
 }
 
 mutation editGod {
   updateGod(id: "5c98e94dd5a3ca0de10a1501", name: "Cronus", type: "goddamn god") {
-    id
-    name
+   ...FindGod
     type
     description
   }
 }
 
 mutation modifyRelatives {
-  addGodRelative(godId: "5c98f221d5a3ca0de10a15d3", relativeId: "5c98ef16d5a3ca0de10a157b", relationship: "child") {
+  addGodRelative(godId: "5c98ecb2d5a3ca0de10a1554", relativeId: "5c98edc9d5a3ca0de10a1566", relationship: "child") {
     name
     parents {
-      name
-      id
+      ...FindGod
     }
     children {
-      name
-      id
+     ...FindGod
       parents {
         name
       }
     }
     siblings {
-      name
-      id
+      ...FindGod
     }
   }
 }

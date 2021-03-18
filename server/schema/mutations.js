@@ -81,7 +81,7 @@ const mutation = new GraphQLObjectType({
     type: AbodeType,
     args: {
       name: { type: GraphQLString },
-      coordinates: { type: GraphQLFloat }
+      coordinates: { type: GraphQLString }
     },
     resolve(parentValue, { name, coordinates }) {
       return new Abode({ name, coordinates }).save();
