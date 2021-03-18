@@ -69,21 +69,21 @@ const mutation = new GraphQLObjectType({
       type: GodType,
       args: {
         godId: { type: GraphQLID },
-        domain: { type: GraphQLString }
+        domain: { type: GraphQLString },
       },
       resolve(parentValue, { godId, domain }) {
         return God.addDomain(godId, domain);
-      }
+      },
     },
     removeGodDomain: {
       type: GodType,
       args: {
         godId: { type: GraphQLID },
-        domain: { type: GraphQLString }
+        domain: { type: GraphQLString },
       },
       resolve(parentValue, { godId, domain }) {
         return God.removeDomain(godId, domain);
-      }
+      },
     },
     addGodRelative: {
       type: GodType,
@@ -95,6 +95,17 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { godId, relativeId, relationship }) {
         return God.addRelative(godId, relativeId, relationship);
       },
+    },
+    removeGodRelative: {
+      type: GodType,
+      args: {
+        godId: { type: GraphQLID },
+        relativeId: { type: GraphQLID },
+        relationship: { type: GraphQLString }
+      },
+      resolve(parentValue, { godId, relativeId, relationship }) {
+        return God.removeRelative(godId, relativeId, relationship);
+      }
     },
     newAbode: {
       type: AbodeType,

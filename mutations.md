@@ -157,6 +157,20 @@ mutation modifyRelatives {
       ...FindGod
     }
   }
+
+    removeGodRelative(godId: "5c98ea9bd5a3ca0de10a151a", relativeId: "5c98ecb2d5a3ca0de10a1554", relationship: "sibling") {
+    name
+    id
+    parents {
+      ...FindGod
+    }
+    children {
+     ...FindGod
+    }
+    siblings {
+      ...FindGod
+    }
+  }
 }
 
 mutation createAbode {
