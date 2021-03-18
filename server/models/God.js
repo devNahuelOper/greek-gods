@@ -57,6 +57,17 @@ GodSchema.statics.findRelatives = function (godId, type) {
     .then((god) => god[type]);
 };
 
+GodSchema.statics.addDomain = function (godId, domain) {
+  return this.findById(godId).then((god) => {
+    if (!god.domains.includes(domain)) {
+      god.domains.push(domain);
+      return god.domains;
+    } else {
+      throw new Error(`${god.name} already has domain: ${domain}`);
+    }
+  });
+};
+
 GodSchema.statics.addRelative = function (godId, relativeId, relationship) {
   const God = mongoose.model("god");
 
