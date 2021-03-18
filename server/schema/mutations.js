@@ -86,6 +86,15 @@ const mutation = new GraphQLObjectType({
         return new Abode({ name, coordinates }).save();
       }
     },
+    newEmblem: {
+      type: EmblemType,
+      args: {
+        name: { type: GraphQLString }
+      },
+      resolve(parentValue, { name }) {
+        return new Emblem({ name }).save();
+      }
+    }
   },
 });
 

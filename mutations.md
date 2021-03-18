@@ -152,3 +152,9 @@ mutation createAbode {
     ...FindAbode
   }
 }
+
+mutation createEmblem {
+  newEmblem(name: "Spoon") {
+    ...FindEmblem
+  }
+}
