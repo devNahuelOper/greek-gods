@@ -80,21 +80,28 @@ const mutation = new GraphQLObjectType({
       type: AbodeType,
       args: {
         name: { type: GraphQLString },
-        coordinates: { type: GraphQLString }
+        coordinates: { type: GraphQLString },
       },
       resolve(parentValue, { name, coordinates }) {
         return new Abode({ name, coordinates }).save();
+      },
+    },
+    deleteAbode: {
+      type: AbodeType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(parentValue, { id }) {
+        return Abode.findOneAndDelete({_id: id});
       }
     },
     newEmblem: {
       type: EmblemType,
       args: {
-        name: { type: GraphQLString }
+        name: { type: GraphQLString },
       },
       resolve(parentValue, { name }) {
         return new Emblem({ name }).save();
-      }
-    }
+      },
+    },
   },
 });
 

@@ -153,6 +153,12 @@ mutation createAbode {
   }
 }
 
+mutation removeAbode {
+  deleteAbode(id: "605368beb95c22545e72253f") {
+    ...FindAbode
+  }
+}
+
 mutation createEmblem {
   newEmblem(name: "Spoon") {
     ...FindEmblem
