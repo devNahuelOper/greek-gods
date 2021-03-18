@@ -95,14 +95,41 @@ const mutation = new GraphQLObjectType({
         const emblem = new Emblem({ name });
         emblem.save();
 
-        return God.findById(id).then(god => {
+        return God.findById(id).then((god) => {
           god.emblems.push(emblem);
           emblem.gods.push(god);
           god.save();
 
           return god;
-        })
-      }
+        });
+      },
+    },
+    removeGodEmblem: {
+      type: GodType,
+      args: {
+        godId: { type: GraphQLID },
+        emblemId: { type: GraphQLID },
+      },
+      async resolve(parentValue, { godId, emblemId }) {
+        const god = await God.findById(godId);
+        const emblem = await Emblem.findById(emblemId);
+
+        const godUpdate = await God.findOneAndUpdate(
+          { _id: godId },
+          { emblems: god.emblems.filter((emb) => !emblem.equals(emb._id)) },
+          { new: true },
+          (err, god) => god
+        );
+
+        const emblemUpdate = await Emblem.findOneAndUpdate(
+          { _id: emblemId },
+          { gods: emblem.gods.filter((g) => !(god.equals(g._id))) },
+          { new: true },
+          (err, emblem) => emblem
+        );
+        
+        return godUpdate;
+      },
     },
     addGodRelative: {
       type: GodType,

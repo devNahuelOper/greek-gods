@@ -217,3 +217,13 @@ mutation addEmblem {
     }
   }
 }
+
+mutation removeEmblem {
+  removeGodEmblem(godId: "5c98f0f6d5a3ca0de10a15b7", emblemId: "5c98f108d5a3ca0de10a15b8") {
+    ...FindGod
+    emblems {
+      name
+      id
+    }
+  }
+}

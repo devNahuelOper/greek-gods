@@ -13,7 +13,12 @@ if (!db) {
 }
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch((err) => console.log(err));
 

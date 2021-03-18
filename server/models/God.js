@@ -51,12 +51,6 @@ const GodSchema = new Schema({
   ],
 });
 
-GodSchema.statics.findRelatives = function (godId, type) {
-  return this.findById(godId)
-    .populate(`${type}`)
-    .then((god) => god[type]);
-};
-
 GodSchema.statics.addDomain = function (godId, domain) {
   return this.findById(godId).then((god) => {
     if (!god.domains.includes(domain)) {
@@ -81,6 +75,12 @@ GodSchema.statics.removeDomain = async function (godId, domain) {
   } else {
     throw new Error(`${domain} is not part of ${god.name}'s domains`);
   }
+};
+
+GodSchema.statics.findRelatives = function (godId, type) {
+  return this.findById(godId)
+    .populate(`${type}`)
+    .then((god) => god[type]);
 };
 
 GodSchema.statics.addRelative = function (godId, relativeId, relationship) {
@@ -126,24 +126,36 @@ GodSchema.statics.removeRelative = function (godId, relativeId, relationship) {
 
     switch (relationship) {
       case "parent":
-        parentIdx = god.parents.findIndex((par) => par.toString() == relative._id.toString());
-        childIdx = relative.children.findIndex((child) => child.toString() == god._id.toString());
+        parentIdx = god.parents.findIndex(
+          (par) => par.toString() == relative._id.toString()
+        );
+        childIdx = relative.children.findIndex(
+          (child) => child.toString() == god._id.toString()
+        );
 
         if (parentIdx != -1) god.parents.splice(parentIdx, 1);
         if (childIdx != -1) relative.children.splice(childIdx, 1);
 
         break;
       case "child":
-        childIdx = god.children.findIndex(child => child.toString() == relative._id.toString());
-        parentIdx = relative.parents.findIndex(par => par.toString() == god._id.toString());
+        childIdx = god.children.findIndex(
+          (child) => child.toString() == relative._id.toString()
+        );
+        parentIdx = relative.parents.findIndex(
+          (par) => par.toString() == god._id.toString()
+        );
 
         if (childIdx != -1) god.children.splice(childIdx, 1);
         if (parentIdx != -1) relative.parents.splice(parentIdx, 1);
 
         break;
       case "sibling":
-        let godSibIdx = god.siblings.findIndex(sib => sib.toString() == relative._id.toString());
-        let relSibIdx = relative.siblings.findIndex(sib => sib.toString() == god._id.toString());
+        let godSibIdx = god.siblings.findIndex(
+          (sib) => sib.toString() == relative._id.toString()
+        );
+        let relSibIdx = relative.siblings.findIndex(
+          (sib) => sib.toString() == god._id.toString()
+        );
 
         if (godSibIdx != -1) god.siblings.splice(godSibIdx, 1);
         if (relSibIdx != -1) relative.siblings.splice(relSibIdx, 1);
@@ -156,5 +168,6 @@ GodSchema.statics.removeRelative = function (godId, relativeId, relationship) {
     );
   });
 };
+
 
 module.exports = mongoose.model("god", GodSchema);
