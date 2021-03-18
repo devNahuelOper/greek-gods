@@ -90,8 +90,8 @@ const mutation = new GraphQLObjectType({
       type: AbodeType,
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
-        return Abode.findOneAndDelete({_id: id});
-      }
+        return Abode.findOneAndDelete({ _id: id });
+      },
     },
     newEmblem: {
       type: EmblemType,
@@ -101,6 +101,13 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, { name }) {
         return new Emblem({ name }).save();
       },
+    },
+    deleteEmblem: {
+      type: EmblemType,
+      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+      resolve(parentValue, { id }) {
+        return Emblem.findOneAndDelete({ _id: id });
+      }
     },
   },
 });

@@ -164,3 +164,9 @@ mutation createEmblem {
     ...FindEmblem
   }
 }
+
+mutation removeEmblem {
+  deleteEmblem(id: "605361ea3530363f2358cd1c") {
+    ...FindEmblem
+  }
+}
