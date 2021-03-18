@@ -7,9 +7,17 @@ const {
   GraphQLID,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLFloat,
 } = graphql;
+
 const God = mongoose.model("god");
 const GodType = require("./god_type");
+
+const Abode = mongoose.model("abode");
+const AbodeType = require("./abode_type");
+
+const Emblem = mongoose.model("emblem");
+const EmblemType = require("./emblem_type");
 
 const mutation = new GraphQLObjectType({
   name: "Mutation",
@@ -68,6 +76,16 @@ const mutation = new GraphQLObjectType({
         return God.addRelative(godId, relativeId, relationship);
       },
     },
+  },
+  newAbode: {
+    type: AbodeType,
+    args: {
+      name: { type: GraphQLString },
+      coordinates: { type: GraphQLFloat }
+    },
+    resolve(parentValue, { name, coordinates }) {
+      return new Abode({ name, coordinates }).save();
+    }
   },
 });
 
