@@ -129,6 +129,18 @@ mutation editGod {
   }
 }
 
+mutation addDomain {
+  addGodDomain(godId: "5c98e94dd5a3ca0de10a1501", domain: "The Cellar") {
+    ...FindGod
+  }
+}
+
+mutation removeDomain {
+  removeGodDomain(godId: "5c98e94dd5a3ca0de10a1501", domain: "The Cellar") {
+    ...FindGod
+  }
+}
+
 mutation modifyRelatives {
   addGodRelative(godId: "5c98ecb2d5a3ca0de10a1554", relativeId: "5c98edc9d5a3ca0de10a1566", relationship: "child") {
     name

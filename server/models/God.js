@@ -68,6 +68,21 @@ GodSchema.statics.addDomain = function (godId, domain) {
   });
 };
 
+GodSchema.statics.removeDomain = async function (godId, domain) {
+  const god = await this.findById(godId);
+  const domainIndex = await god.domains.findIndex(
+    (dom) => dom.toLowerCase() === domain.toLowerCase()
+  );
+
+  if (domainIndex != -1) {
+    god.domains.splice(domainIndex, 1);
+    god.save();
+    return god.domains;
+  } else {
+    throw new Error(`${domain} is not part of ${god.name}'s domains`)
+  }
+};
+
 GodSchema.statics.addRelative = function (godId, relativeId, relationship) {
   const God = mongoose.model("god");
 

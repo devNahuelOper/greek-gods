@@ -75,6 +75,16 @@ const mutation = new GraphQLObjectType({
         return God.addDomain(godId, domain);
       }
     },
+    removeGodDomain: {
+      type: GodType,
+      args: {
+        godId: { type: GraphQLID },
+        domain: { type: GraphQLString }
+      },
+      resolve(parentValue, { godId, domain }) {
+        return God.removeDomain(godId, domain);
+      }
+    },
     addGodRelative: {
       type: GodType,
       args: {
