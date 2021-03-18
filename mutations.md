@@ -208,3 +208,12 @@ mutation editEmblem {
     ...FindEmblem
   }
 }
+
+mutation addEmblem {
+  addGodEmblem(id: "5c98ea9bd5a3ca0de10a151a", name: "Frog") {
+    ...FindGod
+    emblems {
+      ...FindEmblem
+    }
+  }
+}

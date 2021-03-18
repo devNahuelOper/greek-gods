@@ -85,6 +85,25 @@ const mutation = new GraphQLObjectType({
         return God.removeDomain(godId, domain);
       },
     },
+    addGodEmblem: {
+      type: GodType,
+      args: {
+        id: { type: GraphQLID },
+        name: { type: GraphQLString },
+      },
+      resolve(parentValue, { id, name }) {
+        const emblem = new Emblem({ name });
+        emblem.save();
+
+        return God.findById(id).then(god => {
+          god.emblems.push(emblem);
+          emblem.gods.push(god);
+          god.save();
+
+          return god;
+        })
+      }
+    },
     addGodRelative: {
       type: GodType,
       args: {
@@ -101,11 +120,11 @@ const mutation = new GraphQLObjectType({
       args: {
         godId: { type: GraphQLID },
         relativeId: { type: GraphQLID },
-        relationship: { type: GraphQLString }
+        relationship: { type: GraphQLString },
       },
       resolve(parentValue, { godId, relativeId, relationship }) {
         return God.removeRelative(godId, relativeId, relationship);
-      }
+      },
     },
     newAbode: {
       type: AbodeType,
