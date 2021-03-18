@@ -93,6 +93,27 @@ const mutation = new GraphQLObjectType({
         return Abode.findOneAndDelete({ _id: id });
       },
     },
+    updateAbode: {
+      type: AbodeType,
+      args: {
+        id: { type: GraphQLID },
+        name: { type: GraphQLString },
+        coordinates: { type: GraphQLString },
+      },
+      resolve(parentValue, { id, name, coordinates }) {
+        const updateObj = {};
+        updateObj.id = id;
+        if (name) updateObj.name = name;
+        if (coordinates) updateObj.coordinates = coordinates;
+
+        return Abode.findOneAndUpdate(
+          { _id: id },
+          { $set: updateObj },
+          { new: true },
+          (err, abode) => abode
+        );
+      },
+    },
     newEmblem: {
       type: EmblemType,
       args: {
@@ -107,7 +128,7 @@ const mutation = new GraphQLObjectType({
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
         return Emblem.findOneAndDelete({ _id: id });
-      }
+      },
     },
   },
 });
