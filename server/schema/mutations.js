@@ -76,16 +76,16 @@ const mutation = new GraphQLObjectType({
         return God.addRelative(godId, relativeId, relationship);
       },
     },
-  },
-  newAbode: {
-    type: AbodeType,
-    args: {
-      name: { type: GraphQLString },
-      coordinates: { type: GraphQLString }
+    newAbode: {
+      type: AbodeType,
+      args: {
+        name: { type: GraphQLString },
+        coordinates: { type: GraphQLString }
+      },
+      resolve(parentValue, { name, coordinates }) {
+        return new Abode({ name, coordinates }).save();
+      }
     },
-    resolve(parentValue, { name, coordinates }) {
-      return new Abode({ name, coordinates }).save();
-    }
   },
 });
 

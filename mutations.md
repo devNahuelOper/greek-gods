@@ -146,3 +146,9 @@ mutation modifyRelatives {
     }
   }
 }
+
+mutation createAbode {
+  newAbode(name: "The Toilet", coordinates: "26°09′41″S 23°11′37″W ") {
+    ...FindAbode
+  }
+}
