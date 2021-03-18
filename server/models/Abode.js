@@ -8,7 +8,7 @@ const AbodeSchema = new Schema({
     required: true,
     unique: true,
   },
-  coordinate: {
+  coordinates: {
     type: String,
     required: true,
   },

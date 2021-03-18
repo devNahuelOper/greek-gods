@@ -25,10 +25,12 @@ const GodSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "abode",
   },
-  emblems: {
-    type: Schema.Types.ObjectId,
-    ref: "emblem",
-  },
+  emblems: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "emblem",
+    },
+  ],
   parents: [
     {
       type: Schema.Types.ObjectId,
@@ -57,7 +59,7 @@ GodSchema.statics.findRelatives = function (godId, type) {
 
 GodSchema.statics.addRelative = function (godId, relativeId, relationship) {
   const God = mongoose.model("god");
-  
+
   return God.find({
     _id: { $in: [godId, relativeId] },
   }).then((gods) => {

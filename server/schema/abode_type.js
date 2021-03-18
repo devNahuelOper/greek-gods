@@ -5,8 +5,6 @@ const {
   GraphQLString,
   GraphQLID,
   GraphQLList,
-  GraphQLInt,
-  GraphQLFloat,
 } = graphql;
 const Abode = mongoose.model("abode");
 
@@ -15,7 +13,7 @@ const AbodeType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    coordinates: { type: GraphQLFloat },
+    coordinates: { type: GraphQLString },
     gods: {
       type: new GraphQLList(require("./god_type")),
       resolve(parentValue) {
