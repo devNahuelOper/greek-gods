@@ -101,17 +101,7 @@ const mutation = new GraphQLObjectType({
         coordinates: { type: GraphQLString },
       },
       resolve(parentValue, { id, name, coordinates }) {
-        const updateObj = {};
-        updateObj.id = id;
-        if (name) updateObj.name = name;
-        if (coordinates) updateObj.coordinates = coordinates;
-
-        return Abode.findOneAndUpdate(
-          { _id: id },
-          { $set: updateObj },
-          { new: true },
-          (err, abode) => abode
-        );
+        return Abode.editAbode(id, name, coordinates);
       },
     },
     newEmblem: {
@@ -128,6 +118,16 @@ const mutation = new GraphQLObjectType({
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
         return Emblem.findOneAndDelete({ _id: id });
+      },
+    },
+    updateEmblem: {
+      type: EmblemType,
+      args: {
+        id: { type: GraphQLID },
+        name: { type: GraphQLString },
+      },
+      resolve(parentValue, { id, name }) {
+        return Emblem.editEmblem(id, name);
       },
     },
   },

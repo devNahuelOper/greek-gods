@@ -176,3 +176,9 @@ mutation removeEmblem {
     ...FindEmblem
   }
 }
+
+mutation editEmblem {
+  updateEmblem(id: "60536ac795010a569e44e181", name: "SpoonMan") {
+    ...FindEmblem
+  }
+}
