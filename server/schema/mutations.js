@@ -3,11 +3,8 @@ const mongoose = require("mongoose");
 const {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLInt,
   GraphQLID,
-  GraphQLList,
   GraphQLNonNull,
-  GraphQLFloat,
 } = graphql;
 
 const God = mongoose.model("god");
