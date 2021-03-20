@@ -37,9 +37,6 @@ query fetchGodRelatives {
     children {
     	...FindGod
     }
-    siblings {
-      ...FindGod
-    }
   }
 }
 
