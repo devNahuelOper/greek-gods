@@ -126,15 +126,17 @@ mutation editGod {
   }
 }
 
-mutation addDomain {
-  addGodDomain(godId: "5c98e94dd5a3ca0de10a1501", domain: "The Cellar") {
+mutation addGodDomain {
+  addGodDomain(godId: "5c98edc9d5a3ca0de10a1566", domain: "Bodega") {
     ...FindGod
+    domains
   }
 }
 
-mutation removeDomain {
-  removeGodDomain(godId: "5c98e94dd5a3ca0de10a1501", domain: "The Cellar") {
+mutation removeGodDomain {
+  removeGodDomain(godId: "5c98edc9d5a3ca0de10a1566" domain: "Harvest") {
     ...FindGod
+    domains
   }
 }
 

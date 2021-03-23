@@ -182,29 +182,22 @@ GodSchema.statics.removeEmblem = (godId, emblemId) => {
 // DOMAIN
 
 GodSchema.statics.addDomain = function (godId, domain) {
-  return this.findById(godId).then((god) => {
-    if (!god.domains.includes(domain)) {
-      god.domains.push(domain);
-      return god.domains;
-    } else {
-      throw new Error(`${god.name} already has domain: ${domain}`);
-    }
-  });
+  const God = mongoose.model("god");
+  return God.findById(godId).then(god => {
+    god.domains.push(domain);
+
+    return god.save().then(god => god);
+  })
 };
 
-GodSchema.statics.removeDomain = async function (godId, domain) {
-  const god = await this.findById(godId);
-  const domainIndex = await god.domains.findIndex(
-    (dom) => dom.toLowerCase() === domain.toLowerCase()
-  );
+GodSchema.statics.removeDomain = async function(godId, domain) {
+  const God = mongoose.model("god");
+  let god = await God.findById(godId);
 
-  if (domainIndex != -1) {
-    god.domains.splice(domainIndex, 1);
-    god.save();
-    return god.domains;
-  } else {
-    throw new Error(`${domain} is not part of ${god.name}'s domains`);
-  }
-};
+  god.domains.pull(domain);
+
+  god = await god.save();
+  return god;
+}
 
 module.exports = mongoose.model("god", GodSchema);
