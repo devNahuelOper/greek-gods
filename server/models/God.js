@@ -193,7 +193,6 @@ GodSchema.statics.addDomain = function (godId, domain) {
 GodSchema.statics.removeDomain = async function(godId, domain) {
   const God = mongoose.model("god");
   let god = await God.findById(godId);
-
   god.domains.pull(domain);
 
   god = await god.save();

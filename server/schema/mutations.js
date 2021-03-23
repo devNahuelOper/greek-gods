@@ -60,8 +60,8 @@ const mutation = new GraphQLObjectType({
     addGodDomain: {
       type: GodType,
       args: {
-        godId: { type: GraphQLID },
-        domain: { type: GraphQLString },
+        godId: { type: new GraphQLNonNull(GraphQLID) },
+        domain: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(parentValue, { godId, domain }) {
         return God.addDomain(godId, domain);
@@ -70,8 +70,8 @@ const mutation = new GraphQLObjectType({
     removeGodDomain: {
       type: GodType,
       args: {
-        godId: { type: GraphQLID },
-        domain: { type: GraphQLString },
+        godId: { type: new GraphQLNonNull(GraphQLID) },
+        domain: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(parentValue, { godId, domain }) {
         return God.removeDomain(godId, domain);
@@ -139,12 +139,17 @@ const mutation = new GraphQLObjectType({
     updateAbode: {
       type: AbodeType,
       args: {
-        id: { type: GraphQLID },
+        id: { type: new GraphQLNonNull(GraphQLID) },
         name: { type: GraphQLString },
-        coordinates: { type: GraphQLString },
+        coordinates: { type: GraphQLString }
       },
-      resolve(parentValue, { id, name, coordinates }) {
-        return Abode.editAbode(id, name, coordinates);
+      resolve(parentValue, { id, name }) {
+        return Abode.findOneAndUpdate(
+          { _id: id },
+          { $set: { name } },
+          { new: true },
+          (err, abode) => abode
+        );
       },
     },
     newEmblem: {

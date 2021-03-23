@@ -184,8 +184,8 @@ mutation removeAbode {
   }
 }
 
-mutation editAbode {
-  updateAbode(id: "60536ac395010a569e44e180", name: "Toilet") {
+mutation updateAbode {
+  updateAbode(id: "60536ac395010a569e44e180", name: "The Mighty Toilet") {
     ...FindAbode
   }
 }
