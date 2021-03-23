@@ -215,12 +215,11 @@ mutation addGodEmblem {
   }
 }
 
-mutation removeEmblem {
-  removeGodEmblem(godId: "5c98f0f6d5a3ca0de10a15b7", emblemId: "5c98f108d5a3ca0de10a15b8") {
+mutation removeGodEmblem {
+  removeGodEmblem(godId: "5c98edc9d5a3ca0de10a1566", emblemId: "5c98edddd5a3ca0de10a1569") {
     ...FindGod
     emblems {
-      name
-      id
+      ...FindEmblem
     }
   }
 }

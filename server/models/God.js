@@ -163,6 +163,22 @@ GodSchema.statics.addEmblem = (godId, emblemId) => {
   });
 };
 
+GodSchema.statics.removeEmblem = (godId, emblemId) => {
+  const God = mongoose.model("god");
+  const Emblem = mongoose.model("emblem");
+
+  return God.findById(godId).then((god) => {
+    return Emblem.findById(emblemId).then((emblem) => {
+      god.emblems.pull(emblem);
+      emblem.gods.pull(god);
+
+      return Promise.all([god.save(), emblem.save()]).then(
+        ([god, emblem]) => god
+      );
+    });
+  });
+};
+
 // DOMAIN
 
 GodSchema.statics.addDomain = function (godId, domain) {

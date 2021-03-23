@@ -90,28 +90,11 @@ const mutation = new GraphQLObjectType({
     removeGodEmblem: {
       type: GodType,
       args: {
-        godId: { type: GraphQLID },
-        emblemId: { type: GraphQLID },
+        godId: { type: new GraphQLNonNull(GraphQLID) },
+        emblemId: { type: new GraphQLNonNull(GraphQLID) },
       },
-      async resolve(parentValue, { godId, emblemId }) {
-        const god = await God.findById(godId);
-        const emblem = await Emblem.findById(emblemId);
-
-        const godUpdate = await God.findOneAndUpdate(
-          { _id: godId },
-          { emblems: god.emblems.filter((emb) => !emblem.equals(emb._id)) },
-          { new: true },
-          (err, god) => god
-        );
-
-        const emblemUpdate = await Emblem.findOneAndUpdate(
-          { _id: emblemId },
-          { gods: emblem.gods.filter((g) => !god.equals(g._id)) },
-          { new: true },
-          (err, emblem) => emblem
-        );
-
-        return godUpdate;
+      resolve(parentValue, { godId, emblemId }) {
+        return God.removeEmblem(godId, emblemId);
       },
     },
     addGodRelative: {
