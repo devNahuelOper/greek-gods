@@ -51,31 +51,7 @@ const GodSchema = new Schema({
   ],
 });
 
-GodSchema.statics.addDomain = function (godId, domain) {
-  return this.findById(godId).then((god) => {
-    if (!god.domains.includes(domain)) {
-      god.domains.push(domain);
-      return god.domains;
-    } else {
-      throw new Error(`${god.name} already has domain: ${domain}`);
-    }
-  });
-};
-
-GodSchema.statics.removeDomain = async function (godId, domain) {
-  const god = await this.findById(godId);
-  const domainIndex = await god.domains.findIndex(
-    (dom) => dom.toLowerCase() === domain.toLowerCase()
-  );
-
-  if (domainIndex != -1) {
-    god.domains.splice(domainIndex, 1);
-    god.save();
-    return god.domains;
-  } else {
-    throw new Error(`${domain} is not part of ${god.name}'s domains`);
-  }
-};
+// RELATIVES
 
 GodSchema.statics.findRelatives = function (godId, type) {
   return this.findById(godId)
@@ -169,5 +145,50 @@ GodSchema.statics.removeRelative = function (godId, relativeId, relationship) {
   });
 };
 
+// EMBLEM
+
+GodSchema.statics.addEmblem = (godId, emblemId) => {
+  const God = mongoose.model("god");
+  const Emblem = mongoose.model("emblem");
+
+  return God.findById(godId).then((god) => {
+    return Emblem.findById(emblemId).then((emblem) => {
+      god.emblems.push(emblem);
+      emblem.gods.push(god);
+
+      return Promise.all([god.save(), emblem.save()]).then(
+        ([god, emblem]) => god
+      );
+    });
+  });
+};
+
+// DOMAIN
+
+GodSchema.statics.addDomain = function (godId, domain) {
+  return this.findById(godId).then((god) => {
+    if (!god.domains.includes(domain)) {
+      god.domains.push(domain);
+      return god.domains;
+    } else {
+      throw new Error(`${god.name} already has domain: ${domain}`);
+    }
+  });
+};
+
+GodSchema.statics.removeDomain = async function (godId, domain) {
+  const god = await this.findById(godId);
+  const domainIndex = await god.domains.findIndex(
+    (dom) => dom.toLowerCase() === domain.toLowerCase()
+  );
+
+  if (domainIndex != -1) {
+    god.domains.splice(domainIndex, 1);
+    god.save();
+    return god.domains;
+  } else {
+    throw new Error(`${domain} is not part of ${god.name}'s domains`);
+  }
+};
 
 module.exports = mongoose.model("god", GodSchema);

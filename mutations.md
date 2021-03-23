@@ -206,8 +206,8 @@ mutation editEmblem {
   }
 }
 
-mutation addEmblem {
-  addGodEmblem(id: "5c98ea9bd5a3ca0de10a151a", name: "Frog") {
+mutation addGodEmblem {
+  addGodEmblem(godId: "5c98ea22d5a3ca0de10a1510", emblemId: "5c98e9e0d5a3ca0de10a1508") {
     ...FindGod
     emblems {
       ...FindEmblem

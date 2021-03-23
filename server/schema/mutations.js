@@ -1,11 +1,6 @@
 const graphql = require("graphql");
 const mongoose = require("mongoose");
-const {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLID,
-  GraphQLNonNull,
-} = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull } = graphql;
 
 const God = mongoose.model("god");
 const GodType = require("./god_type");
@@ -85,20 +80,11 @@ const mutation = new GraphQLObjectType({
     addGodEmblem: {
       type: GodType,
       args: {
-        id: { type: GraphQLID },
-        name: { type: GraphQLString },
+        godId: { type: new GraphQLNonNull(GraphQLID) },
+        emblemId: { type: new GraphQLNonNull(GraphQLID) },
       },
-      resolve(parentValue, { id, name }) {
-        const emblem = new Emblem({ name });
-        emblem.save();
-
-        return God.findById(id).then((god) => {
-          god.emblems.push(emblem);
-          emblem.gods.push(god);
-          god.save();
-
-          return god;
-        });
+      resolve(parentValue, { godId, emblemId }) {
+        return God.addEmblem(godId, emblemId);
       },
     },
     removeGodEmblem: {
@@ -120,20 +106,20 @@ const mutation = new GraphQLObjectType({
 
         const emblemUpdate = await Emblem.findOneAndUpdate(
           { _id: emblemId },
-          { gods: emblem.gods.filter((g) => !(god.equals(g._id))) },
+          { gods: emblem.gods.filter((g) => !god.equals(g._id)) },
           { new: true },
           (err, emblem) => emblem
         );
-        
+
         return godUpdate;
       },
     },
     addGodRelative: {
       type: GodType,
       args: {
-        godId: { type: GraphQLID },
-        relativeId: { type: GraphQLID },
-        relationship: { type: GraphQLString },
+        godId: { type: new GraphQLNonNull(GraphQLID) },
+        relativeId: { type: new GraphQLNonNull(GraphQLID) },
+        relationship: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(parentValue, { godId, relativeId, relationship }) {
         return God.addRelative(godId, relativeId, relationship);
@@ -142,9 +128,9 @@ const mutation = new GraphQLObjectType({
     removeGodRelative: {
       type: GodType,
       args: {
-        godId: { type: GraphQLID },
-        relativeId: { type: GraphQLID },
-        relationship: { type: GraphQLString },
+        godId: { type: new GraphQLNonNull(GraphQLID) },
+        relativeId: { type: new GraphQLNonNull(GraphQLID) },
+        relationship: { type: new GraphQLNonNull(GraphQLString) },
       },
       resolve(parentValue, { godId, relativeId, relationship }) {
         return God.removeRelative(godId, relativeId, relationship);
