@@ -140,7 +140,7 @@ mutation removeGodDomain {
   }
 }
 
-mutation modifyRelatives {
+mutation addGodRelative {
   addGodRelative(godId: "5c98ecb2d5a3ca0de10a1554", relativeId: "5c98edc9d5a3ca0de10a1566", relationship: "child") {
     name
     parents {
@@ -156,8 +156,10 @@ mutation modifyRelatives {
       ...FindGod
     }
   }
+}
 
-    removeGodRelative(godId: "5c98ea9bd5a3ca0de10a151a", relativeId: "5c98ecb2d5a3ca0de10a1554", relationship: "sibling") {
+mutation removeGodRelative {
+  removeGodRelative(godId: "5c98f221d5a3ca0de10a15d3", relativeId: "5c98ee49d5a3ca0de10a156e", relationship: "sibling") {
     name
     id
     parents {

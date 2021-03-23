@@ -98,44 +98,18 @@ GodSchema.statics.removeRelative = function (godId, relativeId, relationship) {
     const god = godId === gods[0].id ? gods[0] : gods[1];
     const relative = relativeId === gods[0].id ? gods[0] : gods[1];
 
-    let parentIdx, childIdx;
-
     switch (relationship) {
       case "parent":
-        parentIdx = god.parents.findIndex(
-          (par) => par.toString() == relative._id.toString()
-        );
-        childIdx = relative.children.findIndex(
-          (child) => child.toString() == god._id.toString()
-        );
-
-        if (parentIdx != -1) god.parents.splice(parentIdx, 1);
-        if (childIdx != -1) relative.children.splice(childIdx, 1);
-
+        god.parents.pull(relative);
+        relative.children.pull(god);
         break;
       case "child":
-        childIdx = god.children.findIndex(
-          (child) => child.toString() == relative._id.toString()
-        );
-        parentIdx = relative.parents.findIndex(
-          (par) => par.toString() == god._id.toString()
-        );
-
-        if (childIdx != -1) god.children.splice(childIdx, 1);
-        if (parentIdx != -1) relative.parents.splice(parentIdx, 1);
-
+        god.children.pull(relative);
+        relative.parents.pull(god);
         break;
       case "sibling":
-        let godSibIdx = god.siblings.findIndex(
-          (sib) => sib.toString() == relative._id.toString()
-        );
-        let relSibIdx = relative.siblings.findIndex(
-          (sib) => sib.toString() == god._id.toString()
-        );
-
-        if (godSibIdx != -1) god.siblings.splice(godSibIdx, 1);
-        if (relSibIdx != -1) relative.siblings.splice(relSibIdx, 1);
-
+        god.siblings.pull(relative);
+        relative.siblings.pull(god);
         break;
     }
 
