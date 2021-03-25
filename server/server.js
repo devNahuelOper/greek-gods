@@ -32,4 +32,10 @@ app.use(
   })
 );
 
+const webpackMiddleware = require("webpack-dev-middleware");
+const webpack = require("webpack");
+const webpackConfig = require("../webpack.config");
+
+app.use(webpackMiddleware(webpack(webpackConfig)));
+
 module.exports = app;
