@@ -60,3 +60,7 @@ form * {
 .custom-icon {
     margin-right: 5px;
 }
+
+.name {
+  display: inline-block;
+}

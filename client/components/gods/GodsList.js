@@ -17,7 +17,7 @@ const GodsList = () => {
             return data.gods.map(({ id, name, description }) => (
               <li key={id}>
                 <Link to={`/gods/${id}`}>
-                  <h4>{name}</h4>
+                  <h4 className="name">{name}</h4>
                 </Link>
                 <p className="description">Description: {description}</p>
               </li>
