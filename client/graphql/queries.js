@@ -104,6 +104,10 @@ export default {
       emblems {
         id
         name
+        gods {
+          id
+          name
+        }
       }
     }
   `,
