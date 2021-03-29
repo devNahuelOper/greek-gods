@@ -25,4 +25,13 @@ export default {
       }
     }
   `,
+  NEW_ABODE: gql`
+    mutation NewAbode($name: String, $coordinates: String) {
+      newAbode(name: $name, coordinates: $coordinates) {
+        id
+        name
+        coordinates
+      }
+    }
+  `
 };

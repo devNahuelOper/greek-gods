@@ -65,3 +65,8 @@ form * {
 .name {
   display: inline-block;
 }
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+}

@@ -9,6 +9,7 @@ const { FETCH_EMBLEMS } = Queries;
 
 class EmblemCreate extends React.Component {
   constructor(props) {
+    super(props);
     this.state = {
       name: "",
       message: "",
