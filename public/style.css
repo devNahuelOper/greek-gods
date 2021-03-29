@@ -30,10 +30,6 @@ button {
     font-size: 20px;
 }
 
-.outer a:hover {
-    text-decoration: underline;
-}
-
 .description {
     width: 70%;
 }
@@ -70,20 +66,4 @@ form * {
     margin-right: 5px;
 }
 
-.name {
-  display: inline-block;
-}
 
-.nav-links {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.abode-gods {
-  display: flex;
-  justify-content: space-between;
-}
-
-.abode-gods li {
-  border-bottom: none;
-}

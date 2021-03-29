@@ -1,0 +1,88 @@
+body {
+  background-color: #f3f3f3;
+  padding: 10px 100px;
+  font-family: fantasy;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.outer {
+  ul {
+    margin-block-start: 0 !important;
+    padding-inline-start: 0 !important;
+  }
+  li {
+    list-style-type: none;
+    border-bottom: solid 1px grey;
+    padding-bottom: 5px;
+  }
+  a {
+    text-decoration: none;
+    color: #030303;
+    font-weight: bold;
+    font-size: 20px;
+    &:hover {
+      color: #7a7a7a;
+      transition: 0.5s;
+    }
+  }
+}
+
+.description {
+  width: 70%;
+}
+
+.generation {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.add-icon {
+  float: right;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  * {
+    margin: 5px 0;
+  }
+}
+
+.detail {
+  div {
+    margin: 10px 0;
+  }
+  h2,
+  h4 {
+    display: inline;
+  }
+}
+
+.custom-icon {
+  margin-right: 5px;
+}
+
+.name {
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.abode-gods {
+  display: flex;
+  justify-content: space-between;
+  li {
+    border-bottom: none;
+  }
+}

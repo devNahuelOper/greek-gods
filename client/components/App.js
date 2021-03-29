@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import GodsList from "./gods/GodsList";
 import AbodesList from "./index/AbodesList";
 import Create from "./create/Create";
+// import "../../public/style.scss"; 
 
 const App = () => (
   <div>

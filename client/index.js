@@ -5,6 +5,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import { HashRouter } from "react-router-dom";
 import App from "./components/App";
+import "../public/style.scss"; 
 
 const cache = new InMemoryCache({
   dataIdFromObject: (object) => object.id || null,
