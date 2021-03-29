@@ -4,6 +4,14 @@ body {
     font-family: fantasy;
 }
 
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
 .outer ul {
     margin-block-start: 0 !important;
     padding-inline-start: 0 !important;
