@@ -7,7 +7,6 @@ import DeleteGod from "./DeleteGod";
 const { FETCH_GODS } = Queries;
 
 const GodsList = () => {
-  console.log(Queries);
   return (
     <div className="outer">
       <ul>

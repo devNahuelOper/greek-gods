@@ -77,6 +77,21 @@ form {
 .nav-links {
   display: flex;
   justify-content: space-evenly;
+  a {
+    text-transform: capitalize;
+    &:visited {
+      color: unset;
+    }
+    &:hover {
+      color: grey;
+    }
+  }
+  .current-page {
+    color: #083f39;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
 }
 
 .gods-list {
