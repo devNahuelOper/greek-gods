@@ -1,9 +1,7 @@
 import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import GodsList from "./gods/GodsList";
-import GodCreate from "./create/GodCreate";
-import EmblemCreate from "./create/EmblemCreate";
-import AbodeCreate from "./create/AbodeCreate";
+import AbodesList from "./index/AbodesList";
 import Create from "./create/Create";
 
 const App = () => (
@@ -14,6 +12,7 @@ const App = () => (
     </nav>
     <Switch>
       <Route exact path="/" component={GodsList} />
+      <Route path="/abodes" component={AbodesList} />
       <Route exact path="/new" component={Create}/>
     </Switch>
   </div>

@@ -78,3 +78,12 @@ form * {
   display: flex;
   justify-content: space-evenly;
 }
+
+.abode-gods {
+  display: flex;
+  justify-content: space-between;
+}
+
+.abode-gods li {
+  border-bottom: none;
+}

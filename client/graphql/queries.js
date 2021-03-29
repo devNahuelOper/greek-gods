@@ -79,6 +79,10 @@ export default {
         id
         name
         coordinates
+        gods {
+          id
+          name
+        }
       }
     }
   `,
@@ -88,6 +92,10 @@ export default {
         id
         name
         coordinates
+        gods {
+          id
+          name
+        }
       }
     }
   `,
