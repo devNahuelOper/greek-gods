@@ -1,3 +1,6 @@
+$emblemGold: #895b07;
+$abodeRed: #a72806;
+
 body {
   background-color: #f3f3f3;
   padding: 10px 100px;
@@ -10,6 +13,18 @@ a {
 
 button {
   cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .outer {
@@ -99,5 +114,37 @@ form {
   justify-content: space-between;
   li {
     border-bottom: none;
+  }
+}
+
+.domains {
+  padding: 16px 0;
+  h3 {
+    font-size: 1.2em;
+  }
+}
+
+.god-emblems {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  li {
+    margin: 0 40px;
+  }
+  a {
+    color: $emblemGold;
+    &:hover {
+      filter: brightness(2);
+    }
+  }
+}
+
+.god-abode {
+  a {
+    color: $abodeRed;
+    margin-left: 8px;
+    &:hover {
+      filter: brightness(2);
+    }
   }
 }
