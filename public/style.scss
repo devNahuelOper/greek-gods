@@ -1,6 +1,7 @@
 $emblemGold: #895b07;
 $abodeRed: #a72806;
 $relativeBlue: #0a639d;
+$darkGrey: #6a6a6a;
 
 body {
   background-color: #f3f3f3;
@@ -72,18 +73,13 @@ form {
   }
 }
 
-.detail {
-  div {
-    margin: 10px 0;
-  }
-  h2,
-  h4 {
-    display: inline;
-  }
+input {
+  outline: none;
 }
 
-.custom-icon {
-  margin-left: 5px;
+input[type="radio"] {
+  cursor: pointer;
+  margin-left: 4px;
 }
 
 .name {
@@ -170,6 +166,21 @@ form {
   }
 }
 
+.detail {
+  div {
+    margin-top: 10px;
+    display: inline-block;
+  }
+  em {
+    text-transform: capitalize;
+    color: $darkGrey;
+  }
+  h2,
+  h4 {
+    display: inline;
+  }
+}
+
 .edit-tools {
   font-size: 10px;
   cursor: pointer;
@@ -177,3 +188,10 @@ form {
   vertical-align: super;
 }
 
+.custom-icon {
+  margin-left: 10px;
+  fill: lightgrey;
+  &:hover {
+    fill: grey;
+  }
+}

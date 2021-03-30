@@ -35,10 +35,18 @@ export default {
     }
   `,
   UPDATE_GOD_NAME: gql`
-    mutation updateGod($id: ID!, $name: String) {
+    mutation updateGodName($id: ID!, $name: String) {
       updateGod(id: $id, name: $name) {
         id
         name
+      }
+    }
+  `,
+  UPDATE_GOD_TYPE: gql`
+    mutation updateGodType($id: ID!, $type: String) {
+      updateGod(id: $id, type: $type) {
+        id
+        type
       }
     }
   `,

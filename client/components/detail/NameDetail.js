@@ -1,7 +1,6 @@
 import React from "react";
 import { Mutation } from "react-apollo";
-import { IconContext } from "react-icons";
-import { FaPencilAlt } from "react-icons/fa";
+import EditTools from "./EditTools";
 
 import Mutations from "../../graphql/mutations";
 const { UPDATE_GOD_NAME } = Mutations;
@@ -41,7 +40,7 @@ class NameDetail extends React.Component {
                   updateGodName({
                     variables: {
                       id,
-                      name
+                      name,
                     },
                   }).then(() => this.setState({ editing: false }));
                 }}
@@ -57,17 +56,10 @@ class NameDetail extends React.Component {
       return (
         <div>
           <h1 className="name">{name}</h1>
-          <div className="edit-tools" onClick={this.handleEdit}>
-            <IconContext.Provider
-              value={{ className: "custom-icon" }}
-            >
-              <FaPencilAlt />
-            </IconContext.Provider>
-          </div>
+          <EditTools onClick={this.handleEdit} title="Edit Name" />
         </div>
       );
     }
-
   }
 }
 

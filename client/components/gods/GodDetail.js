@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import NameDetail from "../detail/NameDetail";
+import TypeDetail from "../detail/TypeDetail";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
 
 const GodDetail = (props) => {
-  console.log(props);
   return (
     <Query query={FETCH_GOD} variables={{ id: props.match.params.godId }}>
       {({ loading, error, data }) => {
@@ -16,6 +16,7 @@ const GodDetail = (props) => {
         const {
           id,
           name,
+          type,
           description,
           domains,
           abode,
@@ -31,6 +32,8 @@ const GodDetail = (props) => {
           data.god && (
             <div className="detail">
               <NameDetail id={id} name={name} />
+              <br />
+              <TypeDetail id={id} type={type}/>
               <p>{description}</p>
               <h3 className="god-abode">
                 Abode:

@@ -15,6 +15,7 @@ export default {
       god(id: $id) {
         id
         name
+        type
         description
         domains
         abode {
