@@ -83,7 +83,7 @@ form {
 }
 
 .custom-icon {
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .name {
@@ -169,3 +169,11 @@ form {
     color: $relativeBlue;
   }
 }
+
+.edit-tools {
+  font-size: 10px;
+  cursor: pointer;
+  display: inline;
+  vertical-align: super;
+}
+
