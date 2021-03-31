@@ -4,6 +4,10 @@ $relativeBlue: #0a639d;
 $darkGrey: #6a6a6a;
 $addGreen: #709d72;
 $addGreenHover: #97cf99;
+$deleteRed: #c65b5b;
+$deleteRedHover: #f83333;
+$tiDelete: #ebc4c4;
+$tiDeleteHover: #ed9393;
 
 body {
   background-color: #f3f3f3;
@@ -146,6 +150,14 @@ input[type="radio"] {
   }
 }
 
+#domain-wrap {
+  display: flex;
+  align-items: center;
+  .edit-tools {
+    margin-top: 0;
+  }
+}
+
 .domains {
   padding: 16px 0;
   display: flex;
@@ -253,6 +265,21 @@ input[type="radio"] {
   fill: $addGreen;
   &:hover {
     fill: $addGreenHover;
+  }
+}
+
+.minus {
+  fill: $deleteRed;
+  &:hover {
+    fill: $deleteRedHover;
+  }
+}
+
+.x {
+  font-size: 12px;
+  fill: $tiDelete;
+  &:hover {
+    fill: $tiDeleteHover;
   }
 }
 
