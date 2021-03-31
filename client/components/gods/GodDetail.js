@@ -7,12 +7,16 @@ import TypeDetail from "../detail/TypeDetail";
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
 
+import Mutations from "../../graphql/mutations";
+const { UPDATE_GOD_NAME } = Mutations;
+
 const GodDetail = (props) => {
   return (
     <Query query={FETCH_GOD} variables={{ id: props.match.params.godId }}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>{error}</p>;
+
         const {
           id,
           name,
@@ -28,10 +32,11 @@ const GodDetail = (props) => {
 
         const family = [parents, children, siblings];
         const famStrings = ["Parents", "Children", "Siblings"];
+        
         return (
           data.god && (
             <div className="detail">
-              <NameDetail id={id} name={name} />
+              <NameDetail id={id} name={name} mutation={UPDATE_GOD_NAME}/>
               <br />
               <TypeDetail id={id} type={type}/>
               <p>{description}</p>

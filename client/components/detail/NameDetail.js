@@ -2,9 +2,6 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import EditTools from "./EditTools";
 
-import Mutations from "../../graphql/mutations";
-const { UPDATE_GOD_NAME } = Mutations;
-
 class NameDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -27,17 +24,17 @@ class NameDetail extends React.Component {
 
   render() {
     const { editing, name } = this.state;
-    const { id } = this.props;
+    const { id, mutation } = this.props;
 
     if (editing) {
       return (
-        <Mutation mutation={UPDATE_GOD_NAME}>
-          {(updateGodName, data) => (
+        <Mutation mutation={mutation}>
+          {(updateName, data) => (
             <div>
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  updateGodName({
+                  updateName({
                     variables: {
                       id,
                       name,

@@ -17,6 +17,22 @@ export default {
       }
     }
   `,
+  UPDATE_GOD_NAME: gql`
+    mutation updateGodName($id: ID!, $name: String) {
+      updateGod(id: $id, name: $name) {
+        id
+        name
+      }
+    }
+  `,
+  UPDATE_GOD_TYPE: gql`
+    mutation updateGodType($id: ID!, $type: String) {
+      updateGod(id: $id, type: $type) {
+        id
+        type
+      }
+    }
+  `,
   NEW_EMBLEM: gql`
     mutation NewEmblem($name: String) {
       newEmblem(name: $name) {
@@ -34,20 +50,12 @@ export default {
       }
     }
   `,
-  UPDATE_GOD_NAME: gql`
-    mutation updateGodName($id: ID!, $name: String) {
-      updateGod(id: $id, name: $name) {
+  UPDATE_ABODE_NAME: gql`
+    mutation updateAbodeName($id: ID!, $name: String) {
+      updateAbode(id: $id, name: $name) {
         id
         name
       }
     }
-  `,
-  UPDATE_GOD_TYPE: gql`
-    mutation updateGodType($id: ID!, $type: String) {
-      updateGod(id: $id, type: $type) {
-        id
-        type
-      }
-    }
-  `,
+  `
 };
