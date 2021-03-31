@@ -33,6 +33,14 @@ export default {
       }
     }
   `,
+  UPDATE_GOD_DESCRIPTION: gql`
+    mutation updateGodDescription($id: ID!, $description: String) {
+      updateGod(id: $id, description: $description) {
+        id
+        description
+      }
+    }
+  `,
   NEW_EMBLEM: gql`
     mutation NewEmblem($name: String) {
       newEmblem(name: $name) {

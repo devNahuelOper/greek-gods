@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import NameDetail from "../detail/NameDetail";
 import TypeDetail from "../detail/TypeDetail";
+import DescriptionDetail from "../detail/DescriptionDetail";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -32,14 +33,15 @@ const GodDetail = (props) => {
 
         const family = [parents, children, siblings];
         const famStrings = ["Parents", "Children", "Siblings"];
-        
+
         return (
           data.god && (
             <div className="detail">
               <NameDetail id={id} name={name} mutation={UPDATE_GOD_NAME}/>
               <br />
               <TypeDetail id={id} type={type}/>
-              <p>{description}</p>
+              <DescriptionDetail id={id} description={description}/>
+              {/* <p>{description}</p> */}
               <h3 className="god-abode">
                 Abode:
                 {Boolean(abode) ? (

@@ -2,14 +2,16 @@ import React from "react";
 import { Mutation } from "react-apollo";
 import EditTools from "./EditTools";
 
-class NameDetail extends React.Component {
+import Mutations from "../../graphql/mutations";
+const { UPDATE_GOD_DESCRIPTION } = Mutations;
+
+class DescriptionDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
-      name: this.props.name || "",
+      description: this.props.description || "",
     };
-
     this.handleEdit = this.handleEdit.bind(this);
   }
 
@@ -23,28 +25,32 @@ class NameDetail extends React.Component {
   }
 
   render() {
-    const { editing, name } = this.state;
-    const { id, mutation } = this.props;
+    const { editing, description } = this.state;
+    const { id } = this.props;
 
     if (editing) {
       return (
-        <Mutation mutation={mutation}>
-          {(updateName, data) => (
-            <div>
+        <Mutation mutation={UPDATE_GOD_DESCRIPTION}>
+          {(updateGodDescription, data) => (
+            <div id="description-update">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  updateName({
+                  updateGodDescription({
                     variables: {
                       id,
-                      name,
+                      description,
                     },
                   }).then(() => this.setState({ editing: false }));
                 }}
               >
-                <input className="name-input" value={name} onChange={this.fieldUpdate("name")} />
+                <textarea
+                  value={description}
+                  onChange={this.fieldUpdate("description")}
+                  placeholder="Description"
+                />
                 <button className="update-btn" type="submit">
-                  Update Name
+                  Update Description
                 </button>
               </form>
             </div>
@@ -53,13 +59,13 @@ class NameDetail extends React.Component {
       );
     } else {
       return (
-        <div>
-          <h1 className="name">{name}</h1>
-          <EditTools onClick={this.handleEdit} title="Edit Name" />
+        <div id="description">
+          <p>{description}</p>
+          <EditTools onClick={this.handleEdit} title="Edit Description"/>
         </div>
-      );
+      )
     }
   }
 }
 
-export default NameDetail;
+export default DescriptionDetail;

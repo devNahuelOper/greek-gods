@@ -66,17 +66,19 @@ class TypeDetail extends React.Component {
                     onChange={this.fieldUpdate("type")}
                   />
                 </label>
-                <button type="submit">Update Type</button>
+                <button className="update-btn" type="submit">Update Type</button>
               </form>
             </div>
           )}
         </Mutation>
       );
     } else {
-      return <div>
-        <em>{type}</em>
-        <EditTools onClick={this.handleEdit} title="Edit Type"/>
-      </div>;
+      return (
+        <div>
+          <em>{type}</em>
+          <EditTools onClick={this.handleEdit} title="Edit Type" />
+        </div>
+      );
     }
   }
 }
