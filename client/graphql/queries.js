@@ -112,4 +112,16 @@ export default {
       }
     }
   `,
+  FETCH_EMBLEM: gql`
+    query FetchEmblem($id: ID!) {
+      emblem(id: $id) {
+        id
+        name
+        gods {
+          id
+          name
+        }
+      }
+    }
+  `
 };

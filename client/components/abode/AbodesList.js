@@ -3,28 +3,30 @@ import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 
 import Queries from "../../graphql/queries";
-const { FETCH_EMBLEMS } = Queries;
+const { FETCH_ABODES } = Queries;
 
-const EmblemsList = () => {
+const AbodesList = () => {
   return (
     <div className="outer">
-      <ul>
-        <Query query={FETCH_EMBLEMS}>
+      <ul className="abode-list">
+        <Query query={FETCH_ABODES}>
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>{error}</p>;
 
-            return data.emblems.map(({ id, name, gods }) => (
+            return data.abodes.map(({ id, name, coordinates, gods }) => (
               <li key={id}>
-                <Link to={`/emblems/${id}`}>
-                  <h4 className="name">{name}</h4>
+                <Link to={`/abodes/${id}`}>
+                  <h4 className="name abode-name">{name}</h4>
                 </Link>
-                <br />
+                <p>Coordinates: {coordinates || "Unknown"}</p>
                 Gods:
                 <ul className="gods-list">
                   {gods.map(({ id, name }) => (
                     <li key={id}>
-                      <Link to={`/gods/${id}`}>{name}</Link>
+                      <Link to={`/gods/${id}`}>
+                        <h4 className="name god-name">{name}</h4>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -37,4 +39,4 @@ const EmblemsList = () => {
   );
 };
 
-export default EmblemsList;
+export default AbodesList;

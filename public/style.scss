@@ -37,7 +37,7 @@ ul {
   li {
     list-style-type: none;
     border-bottom: solid 1px grey;
-    padding-bottom: 5px;
+    padding: 10px 0;
   }
   a {
     text-decoration: none;
@@ -103,6 +103,27 @@ input[type="radio"] {
     font-weight: bolder;
     text-decoration: underline;
     text-underline-offset: 4px;
+  }
+}
+
+.god-name {
+  color: $relativeBlue;
+  &:hover {
+    filter: brightness(2);
+  }
+}
+
+.abode-name {
+  color: $abodeRed;
+  &:hover {
+    filter: brightness(2);
+  }
+}
+
+.emblem-name {
+  color: $emblemGold;
+  &:hover {
+    filter: brightness(2);
   }
 }
 
@@ -185,6 +206,17 @@ input[type="radio"] {
 .abode-detail {
   display: flex;
   flex-direction: column;
+  h1 {
+    color: $abodeRed;
+  }
+}
+
+.emblem-detail {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    color: $emblemGold;
+  }
 }
 
 .edit-tools {
@@ -203,10 +235,11 @@ input[type="radio"] {
 }
 
 .abode-gods {
-  display: flex;
-  justify-content: space-between;
   padding: 80px 0;
-  a {
-    color: $relativeBlue;
+}
+
+.emblems-list {
+  .emblem-name {
+    margin-bottom: 12px;
   }
 }

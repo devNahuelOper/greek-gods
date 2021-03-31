@@ -22,12 +22,12 @@ const AbodeDetail = (props) => {
           <div className="detail abode-detail">
             <NameDetail id={id} name={name} mutation={UPDATE_ABODE_NAME}/>
             <br />
-            <h4>Coordinates: {coordinates}</h4>
-            <ul className="abode-gods">Gods:
+            <h4>Coordinates: {coordinates || "Unknown"}</h4>
+            <ul className="gods-list abode-gods">Gods:
               {gods.map((god) => (
                 <li key={god.id}>
                   <Link to={`/gods/${god.id}`}>
-                    <h3 className="name">{god.name}</h3>
+                    <h3 className="name god-name">{god.name}</h3>
                   </Link>
                 </li>
               ))}

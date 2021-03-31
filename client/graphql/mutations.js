@@ -57,5 +57,13 @@ export default {
         name
       }
     }
+  `,
+  UPDATE_EMBLEM_NAME: gql`
+    mutation updateEmblemName($id: ID!, $name: String) {
+      updateEmblem(id: $id, name: $name) {
+        id
+        name
+      }
+    }
   `
 };
