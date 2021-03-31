@@ -11,18 +11,18 @@ class EditDomain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editing: false,
+      adding: false,
       deleting: false,
       domains: this.props.domains || [],
       newDomain: "",
     };
-    this.handleEdit = this.handleEdit.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleEdit(e) {
+  handleAdd(e) {
     e.preventDefault();
-    this.setState({ editing: true });
+    this.setState({ adding: true });
   }
 
   handleDelete(e) {
@@ -34,11 +34,11 @@ class EditDomain extends React.Component {
     return (e) => this.setState({ [field]: e.target.value });
   }
 
-  handleSubmit(e, addGodDomain) {
+  addDomain(e, addGodDomain) {
     e.preventDefault();
     let { newDomain, domains } = this.state;
     if (!newDomain.trim()) {
-      this.setState({ editing: false });
+      this.setState({ adding: false });
       return;
     }
 
@@ -48,7 +48,7 @@ class EditDomain extends React.Component {
         domain: newDomain,
       },
     }).then(() =>
-      this.setState({ editing: false, domains: [...domains, newDomain] })
+      this.setState({ adding: false, domains: [...domains, newDomain] })
     );
   }
 
@@ -70,19 +70,19 @@ class EditDomain extends React.Component {
   }
 
   render() {
-    const { editing, deleting, domains, newDomain } = this.state;
+    const { adding, deleting, domains, newDomain } = this.state;
     const { id } = this.props;
 
-    if (editing) {
+    if (adding) {
       return (
         <ClickAwayListener
-          onClickAway={() => this.setState({ editing: false })}
+          onClickAway={() => this.setState({ adding: false })}
         >
           <article>
             <Mutation mutation={ADD_GOD_DOMAIN}>
               {(addGodDomain, data) => (
                 <Domains domains={domains}>
-                  <form onSubmit={(e) => this.handleSubmit(e, addGodDomain)}>
+                  <form onSubmit={(e) => this.addDomain(e, addGodDomain)}>
                     <input
                       className="name-input"
                       value={newDomain}
@@ -130,7 +130,7 @@ class EditDomain extends React.Component {
       return (
         <>
           <Domains domains={domains} />
-          <EditTools onClick={this.handleEdit} title="Add Domain" icon="plus" />
+          <EditTools onClick={this.handleAdd} title="Add Domain" icon="plus" />
           <EditTools
             onClick={this.handleDelete}
             title="Delete Domain"

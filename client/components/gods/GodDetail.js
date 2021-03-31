@@ -4,7 +4,7 @@ import { Query } from "react-apollo";
 import NameDetail from "../detail/NameDetail";
 import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
-import EditDomain from "../detail/DomainsDetail/AddDomain";
+import EditDomain from "../detail/DomainsDetail/EditDomain";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
