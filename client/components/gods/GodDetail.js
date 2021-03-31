@@ -4,6 +4,7 @@ import { Query } from "react-apollo";
 import NameDetail from "../detail/NameDetail";
 import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
+import AddDomain from "../detail/DomainsDetail/AddDomain";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -41,7 +42,6 @@ const GodDetail = (props) => {
               <br />
               <TypeDetail id={id} type={type}/>
               <DescriptionDetail id={id} description={description}/>
-              {/* <p>{description}</p> */}
               <h3 className="god-abode">
                 Abode:
                 {Boolean(abode) ? (
@@ -52,11 +52,7 @@ const GodDetail = (props) => {
               </h3>
               <ul className="domains">
                 <h3>Domains:</h3>
-                {domains.length ? (
-                  domains.map((domain) => <li key={domain}>{domain}</li>)
-                ) : (
-                  <h4>&nbsp; None</h4>
-                )}
+                <AddDomain id={id} domains={domains}/>
               </ul>
               <ul className="god-emblems">
                 <h3>Emblems: </h3>

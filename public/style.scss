@@ -2,6 +2,8 @@ $emblemGold: #895b07;
 $abodeRed: #a72806;
 $relativeBlue: #0a639d;
 $darkGrey: #6a6a6a;
+$addGreen: #709d72;
+$addGreenHover: #97cf99;
 
 body {
   background-color: #f3f3f3;
@@ -154,6 +156,10 @@ input[type="radio"] {
   li {
     margin: 0 40px;
   }
+  .edit-tools {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
 }
 
 .god-emblems {
@@ -240,6 +246,13 @@ input[type="radio"] {
   fill: lightgrey;
   &:hover {
     fill: grey;
+  }
+}
+
+.plus {
+  fill: $addGreen;
+  &:hover {
+    fill: $addGreenHover;
   }
 }
 

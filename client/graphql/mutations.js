@@ -41,6 +41,14 @@ export default {
       }
     }
   `,
+  ADD_GOD_DOMAIN: gql`
+    mutation addGodDomain($godId: ID!, $domain: String!) {
+      addGodDomain(godId: $godId, domain: $domain) {
+        id
+        domains
+      }
+    }
+  `,
   NEW_EMBLEM: gql`
     mutation NewEmblem($name: String) {
       newEmblem(name: $name) {
