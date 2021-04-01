@@ -1,6 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import EditTools from "./EditTools";
+import { ClickAwayListener } from "@material-ui/core";
 
 class NameDetail extends React.Component {
   constructor(props) {
@@ -30,24 +31,32 @@ class NameDetail extends React.Component {
       return (
         <Mutation mutation={mutation}>
           {(updateName, data) => (
-            <div>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  updateName({
-                    variables: {
-                      id,
-                      name,
-                    },
-                  }).then(() => this.setState({ editing: false }));
-                }}
-              >
-                <input className="name-input" value={name} onChange={this.fieldUpdate("name")} />
-                <button className="update-btn" type="submit">
-                  Update Name
-                </button>
-              </form>
-            </div>
+            <ClickAwayListener
+              onClickAway={() => this.setState({ editing: false })}
+            >
+              <div>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    updateName({
+                      variables: {
+                        id,
+                        name,
+                      },
+                    }).then(() => this.setState({ editing: false }));
+                  }}
+                >
+                  <input
+                    className="name-input"
+                    value={name}
+                    onChange={this.fieldUpdate("name")}
+                  />
+                  <button className="update-btn" type="submit">
+                    Update Name
+                  </button>
+                </form>
+              </div>
+            </ClickAwayListener>
           )}
         </Mutation>
       );

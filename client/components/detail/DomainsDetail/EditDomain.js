@@ -75,9 +75,7 @@ class EditDomain extends React.Component {
 
     if (adding) {
       return (
-        <ClickAwayListener
-          onClickAway={() => this.setState({ adding: false })}
-        >
+        <ClickAwayListener onClickAway={() => this.setState({ adding: false })}>
           <article>
             <Mutation mutation={ADD_GOD_DOMAIN}>
               {(addGodDomain, data) => (

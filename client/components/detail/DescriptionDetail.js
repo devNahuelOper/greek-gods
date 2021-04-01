@@ -1,6 +1,7 @@
 import React from "react";
 import { Mutation } from "react-apollo";
 import EditTools from "./EditTools";
+import { ClickAwayListener } from "@material-ui/core";
 
 import Mutations from "../../graphql/mutations";
 const { UPDATE_GOD_DESCRIPTION } = Mutations;
@@ -32,28 +33,32 @@ class DescriptionDetail extends React.Component {
       return (
         <Mutation mutation={UPDATE_GOD_DESCRIPTION}>
           {(updateGodDescription, data) => (
-            <div id="description-update">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  updateGodDescription({
-                    variables: {
-                      id,
-                      description,
-                    },
-                  }).then(() => this.setState({ editing: false }));
-                }}
-              >
-                <textarea
-                  value={description}
-                  onChange={this.fieldUpdate("description")}
-                  placeholder="Description"
-                />
-                <button className="update-btn" type="submit">
-                  Update Description
-                </button>
-              </form>
-            </div>
+            <ClickAwayListener
+              onClickAway={() => this.setState({ editing: false })}
+            >
+              <div id="description-update">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    updateGodDescription({
+                      variables: {
+                        id,
+                        description,
+                      },
+                    }).then(() => this.setState({ editing: false }));
+                  }}
+                >
+                  <textarea
+                    value={description}
+                    onChange={this.fieldUpdate("description")}
+                    placeholder="Description"
+                  />
+                  <button className="update-btn" type="submit">
+                    Update Description
+                  </button>
+                </form>
+              </div>
+            </ClickAwayListener>
           )}
         </Mutation>
       );
@@ -61,9 +66,9 @@ class DescriptionDetail extends React.Component {
       return (
         <div id="description">
           <p>{description}</p>
-          <EditTools onClick={this.handleEdit} title="Edit Description"/>
+          <EditTools onClick={this.handleEdit} title="Edit Description" />
         </div>
-      )
+      );
     }
   }
 }
