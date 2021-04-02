@@ -63,6 +63,7 @@ export default {
         id
         abode {
           id
+          name
           gods {
             id
           }

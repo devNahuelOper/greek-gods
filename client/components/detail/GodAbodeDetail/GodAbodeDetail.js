@@ -64,7 +64,7 @@ class GodAbodeDetail extends React.Component {
                         godId: id,
                         abodeId,
                       },
-                    }).then(() => this.setState({ editing: false }));
+                    }).then((newAbode) => this.setState({ editing: false, abode: newAbode.data.updateGodAbode.abode }));
                   }}
                 >
                  <Query query={FETCH_ABODES}>
