@@ -227,3 +227,9 @@ mutation removeGodEmblem {
     }
   }
 }
+
+mutation updateGodAbode {
+  updateGodAbode(godId: "605f69649932e41a878e799d", abodeId: "5c98ed87d5a3ca0de10a1564") {
+    ...FindGod
+  }
+}

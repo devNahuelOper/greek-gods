@@ -5,6 +5,7 @@ import NameDetail from "../detail/NameDetail";
 import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
+import Abodes from "../detail/GodAbodeDetail/Abodes";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -50,6 +51,7 @@ const GodDetail = (props) => {
                   " Unknown"
                 )}
               </h3>
+              <Abodes abode={abode}/>
               <div id="domain-wrap">
                 <h3>Domains:</h3>
                 <EditDomain id={id} domains={domains}/>

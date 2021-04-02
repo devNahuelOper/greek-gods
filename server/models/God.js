@@ -153,24 +153,47 @@ GodSchema.statics.removeEmblem = (godId, emblemId) => {
   });
 };
 
+// ABODE
+
+GodSchema.statics.updateAbode = async (godId, abodeId) => {
+  const God = mongoose.model("god");
+  const Abode = mongoose.model("abode");
+
+  let fetchedGod = await God.findById(godId);
+  let fetchedAbode = await Abode.findById(abodeId);
+
+  fetchedGod = await God.findOneAndUpdate(
+    { _id: godId },
+    { $set: { abode: fetchedAbode } },
+    { new: true },
+    (err, god) => god
+  );
+
+  fetchedAbode.gods.push(fetchedGod);
+
+  return Promise.all([fetchedGod.save(), fetchedAbode.save()]).then(
+    ([god, abode]) => god
+  );
+};
+
 // DOMAIN
 
 GodSchema.statics.addDomain = function (godId, domain) {
   const God = mongoose.model("god");
-  return God.findById(godId).then(god => {
+  return God.findById(godId).then((god) => {
     god.domains.push(domain);
 
-    return god.save().then(god => god);
-  })
+    return god.save().then((god) => god);
+  });
 };
 
-GodSchema.statics.removeDomain = async function(godId, domain) {
+GodSchema.statics.removeDomain = async function (godId, domain) {
   const God = mongoose.model("god");
   let god = await God.findById(godId);
   god.domains.pull(domain);
 
   god = await god.save();
   return god;
-}
+};
 
 module.exports = mongoose.model("god", GodSchema);
