@@ -190,12 +190,11 @@ input[type="radio"] {
 }
 
 .god-abode {
-  a {
-    color: $abodeRed;
-    margin-left: 8px;
-    &:hover {
-      filter: brightness(2);
-    }
+  margin: 0 10px;
+  color: $abodeRed;
+  margin-left: 8px;
+  &:hover {
+    filter: brightness(2);
   }
 }
 
@@ -325,5 +324,14 @@ input[type="radio"] {
   outline: 0;
   &:hover {
     filter: contrast(1.1);
+  }
+}
+
+#god-abode-detail {
+  display: flex;
+  align-items: center;
+  .edit-tools {
+    align-self: flex-start;
+    margin-top: 0;
   }
 }

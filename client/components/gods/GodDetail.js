@@ -5,7 +5,8 @@ import NameDetail from "../detail/NameDetail";
 import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
-import Abodes from "../detail/GodAbodeDetail/Abodes";
+import GodAbodeDetail from "../detail/GodAbodeDetail/GodAbodeDetail";
+
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -43,15 +44,7 @@ const GodDetail = (props) => {
               <br />
               <TypeDetail id={id} type={type}/>
               <DescriptionDetail id={id} description={description}/>
-              <h3 className="god-abode">
-                Abode:
-                {Boolean(abode) ? (
-                  <Link to={`/abodes/${abode.id}`}> {abode.name}</Link>
-                ) : (
-                  " Unknown"
-                )}
-              </h3>
-              <Abodes abode={abode}/>
+              <GodAbodeDetail id={id} abode={abode}/>
               <div id="domain-wrap">
                 <h3>Domains:</h3>
                 <EditDomain id={id} domains={domains}/>

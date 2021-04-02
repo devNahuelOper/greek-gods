@@ -57,6 +57,19 @@ export default {
       }
     }
   `,
+  UPDATE_GOD_ABODE: gql`
+    mutation updateGodAbode($godId: ID!, $abodeId: ID!) {
+      updateGodAbode(godId: $godId, abodeId: $abodeId) {
+        id
+        abode {
+          id
+          gods {
+            id
+          }
+        }
+      }
+    }
+  `,
   NEW_EMBLEM: gql`
     mutation NewEmblem($name: String) {
       newEmblem(name: $name) {

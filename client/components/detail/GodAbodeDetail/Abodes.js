@@ -20,7 +20,7 @@ const FETCH_ABODES = gql`
   }
 `;
 
-const Abodes = ({ abode }) => {
+const Abodes = ({ abode, onChange }) => {
   // console.log(abode);
   const [open, setOpen] = useState(false);
 
@@ -48,6 +48,7 @@ const Abodes = ({ abode }) => {
                 defaultValue={abode.name}
                 onOpen={handleOpen}
                 onClose={handleClose}
+                onChange={onChange}
               >
                 {data.abodes.map(({ id, name }) => (
                   <MenuItem key={id} value={name}>
