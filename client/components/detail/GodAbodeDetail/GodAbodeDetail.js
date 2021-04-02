@@ -1,5 +1,5 @@
 import React from "react";
-import { Mutation } from "react-apollo";
+import { Mutation, Query } from "react-apollo";
 import EditTools from "../EditTools";
 import Abodes from "./Abodes";
 import { ClickAwayListener } from "@material-ui/core";
@@ -8,12 +8,23 @@ import { Link } from "react-router-dom";
 import Mutations from "../../../graphql/mutations";
 const { UPDATE_GOD_ABODE } = Mutations;
 
+import gql from "graphql-tag";
+const FETCH_ABODES = gql`
+  query FetchAbodes {
+    abodes {
+      id
+      name
+    }
+  }
+`;
+
 class GodAbodeDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       editing: false,
       abode: this.props.abode || null,
+      abodeId: this.props.abode.id || null
     };
     this.handleEdit = this.handleEdit.bind(this);
   }
@@ -24,17 +35,23 @@ class GodAbodeDetail extends React.Component {
   }
 
   fieldUpdate(field) {
-    return (e) => this.setState({ [field]: e.target.value });
+
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+      console.log(this.state);
+    }
   }
 
   render() {
-    const { editing, abode } = this.state;
-    const { id } = this.props;
+    const { editing, abode, abodeId } = this.state;
+    const { id  } = this.props;
 
     if (editing) {
       return (
         <Mutation mutation={UPDATE_GOD_ABODE}>
-          {(updateGodAbode, data) => (
+          {(updateGodAbode, data) => {
+            // console.log(data);
+            return (
             <ClickAwayListener
               onClickAway={() => false}
             >
@@ -45,17 +62,31 @@ class GodAbodeDetail extends React.Component {
                     updateGodAbode({
                       variables: {
                         godId: id,
-                        abodeId: abode.id,
+                        abodeId,
                       },
                     }).then(() => this.setState({ editing: false }));
                   }}
                 >
-                  <Abodes abode={abode} onChange={this.fieldUpdate("abode")} />
+                 <Query query={FETCH_ABODES}>
+                  {({loading, error, data}) => {
+                    // console.log(data);
+                     if (loading) return <p>Loading...</p>;
+                     if (error) return <p>{error}</p>;
+                     return (
+                       <select value={abodeId} onChange={this.fieldUpdate("abodeId")}>
+                         {data.abodes.map(abode => 
+                         <option key={abode.id} value={abode.id}>{abode.name}</option>
+                          )}
+                       </select>
+                     )
+                  }}
+                 </Query>
+                  {/* <Abodes abode={abode} onChange={this.fieldUpdate("abode")} /> */}
                   <button className="update-btn" type="submit">Update Abode</button>
                 </form>
               </div>
             </ClickAwayListener>
-          )}
+          )}}
         </Mutation>
       );
     } else {

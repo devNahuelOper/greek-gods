@@ -21,7 +21,7 @@ const FETCH_ABODES = gql`
 `;
 
 const Abodes = ({ abode, onChange }) => {
-  // console.log(abode);
+  console.log(abode);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -45,7 +45,7 @@ const Abodes = ({ abode, onChange }) => {
               <Select
                 labelId="label"
                 id="select"
-                defaultValue={abode.name}
+                value={abode.name}
                 onOpen={handleOpen}
                 onClose={handleClose}
                 onChange={onChange}
