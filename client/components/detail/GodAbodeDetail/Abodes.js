@@ -8,9 +8,6 @@ import {
   ClickAwayListener,
 } from "@material-ui/core";
 
-// import Queries from "../../../graphql/queries";
-// const { FETCH_ABODES } = Queries;
-
 const FETCH_ABODES = gql`
   query FetchAbodes {
     abodes {
@@ -20,38 +17,37 @@ const FETCH_ABODES = gql`
   }
 `;
 
-const Abodes = ({ abode, onChange }) => {
+const Abodes = ({ abode, abodeId, onChange }) => {
   console.log(abode);
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (e) => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (e) => {
     setOpen(false);
   };
 
   return (
     <Query query={FETCH_ABODES}>
       {({loading, error, data}) => {
-        // console.log(data);
         if (loading) return <p>Loading...</p>;
         if (error) return <p>{error}</p>;
 
         return (
           <ClickAwayListener onClickAway={handleClose}>
             <div>
-              <InputLabel id="label">Abode</InputLabel>
+              <InputLabel id="label">Select Abode</InputLabel>
               <Select
                 labelId="label"
                 id="select"
-                value={abode.name}
+                value={abodeId}
                 onOpen={handleOpen}
                 onClose={handleClose}
                 onChange={onChange}
               >
                 {data.abodes.map(({ id, name }) => (
-                  <MenuItem key={id} value={name}>
+                  <MenuItem key={id} value={id}>
                     {name}
                   </MenuItem>
                 ))}

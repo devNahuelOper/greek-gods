@@ -169,7 +169,16 @@ GodSchema.statics.updateAbode = async (godId, abodeId) => {
     (err, god) => god
   );
 
-  fetchedAbode.gods.push(fetchedGod);
+  let abodeGods = [...new Set(fetchedAbode.gods.map(JSON.stringify))].map(JSON.parse);
+  
+  fetchedAbode.gods.addToSet(fetchedGod);
+
+  fetchedAbode = await Abode.findOneAndUpdate(
+    { _id: abodeId },
+    { $set: { gods: abodeGods } },
+    { new: true },
+    (err, abode) => abode
+  );
 
   return Promise.all([fetchedGod.save(), fetchedAbode.save()]).then(
     ([god, abode]) => god

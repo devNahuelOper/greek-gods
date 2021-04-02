@@ -22,7 +22,7 @@ const AbodesList = () => {
                 <p>Coordinates: {coordinates || "Unknown"}</p>
                 Gods:
                 <ul className="gods-list">
-                  {gods.map(({ id, name }) => (
+                  {[...new Set(gods)].map(({ id, name }) => (
                     <li key={id}>
                       <Link to={`/gods/${id}`}>
                         <h4 className="name god-name">{name}</h4>

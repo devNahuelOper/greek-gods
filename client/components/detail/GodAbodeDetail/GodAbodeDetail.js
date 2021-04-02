@@ -1,22 +1,13 @@
 import React from "react";
-import { Mutation, Query } from "react-apollo";
+import { Mutation } from "react-apollo";
 import EditTools from "../EditTools";
 import Abodes from "./Abodes";
 import { ClickAwayListener } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+
 import Mutations from "../../../graphql/mutations";
 const { UPDATE_GOD_ABODE } = Mutations;
-
-import gql from "graphql-tag";
-const FETCH_ABODES = gql`
-  query FetchAbodes {
-    abodes {
-      id
-      name
-    }
-  }
-`;
 
 class GodAbodeDetail extends React.Component {
   constructor(props) {
@@ -38,7 +29,7 @@ class GodAbodeDetail extends React.Component {
 
     return (e) => {
       this.setState({ [field]: e.target.value });
-      console.log(this.state);
+      // console.log(this.state);
     }
   }
 
@@ -50,13 +41,18 @@ class GodAbodeDetail extends React.Component {
       return (
         <Mutation mutation={UPDATE_GOD_ABODE}>
           {(updateGodAbode, data) => {
-            // console.log(data);
             return (
             <ClickAwayListener
-              onClickAway={() => false}
+              onClickAway={(e) => {
+                let menu = document.getElementById("menu-");
+                let currEle = document.elementFromPoint(e.pageX, e.pageY);
+                if (menu && menu.contains(currEle)) return;
+                this.setState({ editing: false });
+              }}
             >
               <div>
                 <form
+                  id="abodeForm"
                   onSubmit={(e) => {
                     e.preventDefault();
                     updateGodAbode({
@@ -67,21 +63,7 @@ class GodAbodeDetail extends React.Component {
                     }).then((newAbode) => this.setState({ editing: false, abode: newAbode.data.updateGodAbode.abode }));
                   }}
                 >
-                 <Query query={FETCH_ABODES}>
-                  {({loading, error, data}) => {
-                    // console.log(data);
-                     if (loading) return <p>Loading...</p>;
-                     if (error) return <p>{error}</p>;
-                     return (
-                       <select value={abodeId} onChange={this.fieldUpdate("abodeId")}>
-                         {data.abodes.map(abode => 
-                         <option key={abode.id} value={abode.id}>{abode.name}</option>
-                          )}
-                       </select>
-                     )
-                  }}
-                 </Query>
-                  {/* <Abodes abode={abode} onChange={this.fieldUpdate("abode")} /> */}
+                  <Abodes abode={abode} abodeId={abodeId} onChange={this.fieldUpdate("abodeId")} />
                   <button className="update-btn" type="submit">Update Abode</button>
                 </form>
               </div>

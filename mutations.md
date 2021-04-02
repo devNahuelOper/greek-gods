@@ -233,3 +233,18 @@ mutation updateGodAbode {
     ...FindGod
   }
 }
+
+mutation updateGodAbode {
+  updateGodAbode(godId: "5c98f05dd5a3ca0de10a159f", abodeId: "5c98eae6d5a3ca0de10a151b") {
+    id
+    name
+    abode {
+      id
+      name
+      gods {
+        id
+        name
+      }
+    }
+  }
+}
