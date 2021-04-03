@@ -5,7 +5,6 @@ import Abodes from "./Abodes";
 import { ClickAwayListener } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-
 import Mutations from "../../../graphql/mutations";
 const { UPDATE_GOD_ABODE } = Mutations;
 
@@ -26,7 +25,6 @@ class GodAbodeDetail extends React.Component {
   }
 
   fieldUpdate(field) {
-
     return (e) => {
       this.setState({ [field]: e.target.value });
       // console.log(this.state);
