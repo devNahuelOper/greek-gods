@@ -126,6 +126,10 @@ input[type="radio"] {
   }
 }
 
+.none {
+  margin-right: 12px;
+}
+
 .god-name {
   color: $relativeBlue;
   &:hover {
@@ -160,6 +164,7 @@ input[type="radio"] {
   align-items: center;
   .edit-tools {
     margin-top: 0;
+    margin-bottom: 5px;
   }
 }
 

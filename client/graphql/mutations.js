@@ -71,6 +71,32 @@ export default {
       }
     }
   `,
+  ADD_GOD_EMBLEM: gql`
+    mutation addGodEmblem($godId: ID!, $emblemId: ID!) {
+      addGodEmblem(godId: $godId, emblemId: $emblemId) {
+        id
+        emblems {
+          id
+          gods {
+            id
+          }
+        }
+      }
+    }
+  `,
+  REMOVE_GOD_EMBLEM: gql`
+    mutation removeGodEmblem($godId: ID!, $emblemId: ID!) {
+      removeGodEmblem(godId: $godId, emblemId: $emblemId) {
+        id
+        emblems {
+          id
+          gods {
+            id
+          }
+        }
+      }
+    }
+  `,
   NEW_EMBLEM: gql`
     mutation NewEmblem($name: String) {
       newEmblem(name: $name) {
@@ -103,5 +129,5 @@ export default {
         name
       }
     }
-  `
+  `,
 };

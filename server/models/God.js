@@ -127,8 +127,8 @@ GodSchema.statics.addEmblem = (godId, emblemId) => {
 
   return God.findById(godId).then((god) => {
     return Emblem.findById(emblemId).then((emblem) => {
-      god.emblems.push(emblem);
-      emblem.gods.push(god);
+      god.emblems.addToSet(emblem);
+      emblem.gods.addToSet(god);
 
       return Promise.all([god.save(), emblem.save()]).then(
         ([god, emblem]) => god
