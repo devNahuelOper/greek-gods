@@ -89,9 +89,7 @@ input[type="radio"] {
   margin-left: 4px;
 }
 
-#label, #select {
-  font-family: fantasy;
-}
+
 
 .name-input {
   border: none;
@@ -225,10 +223,16 @@ input[type="radio"] {
 
 .detail {
   padding: 40px 0;
-  div {
-    margin-top: 10px;
-    display: inline-block;
-  }
+  // div {
+  //   margin-top: 10px;
+  //   display: inline-block;
+  // }
+  // .basic-single {
+  //   display: block;
+  //   div {
+  //     display: block;
+  //   }
+  // }
   em {
     text-transform: capitalize;
     color: $darkGrey;
@@ -237,6 +241,45 @@ input[type="radio"] {
   h4 {
     display: inline;
   }
+}
+
+.basic-single {
+  max-width: 360px;
+}
+
+#abodeForm {
+  .update-btn {
+    width: 167px;
+  }
+}
+
+.MuiInputBase-root {
+  color: rgb(130 130 130);
+  background: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  &:before {
+    border-bottom: 0;
+  }
+}
+
+.MuiInput-underline {
+  &:before, &:after {
+    border-bottom: 0 !important;
+  }
+}
+
+.MuiSelect-icon {
+  top: -4px !important;
+}
+
+#label,
+#select {
+  font-family: fantasy;
+}
+#select {
+  background-color: white;
 }
 
 .abode-detail {

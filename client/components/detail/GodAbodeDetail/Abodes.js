@@ -18,7 +18,7 @@ const FETCH_ABODES = gql`
 `;
 
 const Abodes = ({ abode, abodeId, onChange }) => {
-  console.log(abode);
+  // console.log(abode);
   const [open, setOpen] = useState(false);
 
   const handleOpen = (e) => {

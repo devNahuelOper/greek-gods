@@ -6,7 +6,7 @@ import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
 import GodAbodeDetail from "../detail/GodAbodeDetail/GodAbodeDetail";
-
+import Emblems from "../detail/GodEmblemDetail.js/Emblems";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -40,14 +40,14 @@ const GodDetail = (props) => {
         return (
           data.god && (
             <div className="detail">
-              <NameDetail id={id} name={name} mutation={UPDATE_GOD_NAME}/>
+              <NameDetail id={id} name={name} mutation={UPDATE_GOD_NAME} />
               <br />
-              <TypeDetail id={id} type={type}/>
-              <DescriptionDetail id={id} description={description}/>
-              <GodAbodeDetail id={id} abode={abode}/>
+              <TypeDetail id={id} type={type} />
+              <DescriptionDetail id={id} description={description} />
+              <GodAbodeDetail id={id} abode={abode} />
               <div id="domain-wrap">
                 <h3>Domains:</h3>
-                <EditDomain id={id} domains={domains}/>
+                <EditDomain id={id} domains={domains} />
               </div>
               <ul className="god-emblems">
                 <h3>Emblems: </h3>
@@ -63,6 +63,7 @@ const GodDetail = (props) => {
                   <h4 key="no-emblem">&nbsp; None</h4>
                 )}
               </ul>
+              <Emblems />
               <h2 id="relatives-label">Relatives: </h2>
               <section className="god-family">
                 {family.map((famgroup, i) =>
