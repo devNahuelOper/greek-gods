@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
+import DeleteEmblem from "./DeleteEmblem";
 
 import Queries from "../../graphql/queries";
 const { FETCH_EMBLEMS } = Queries;
@@ -30,6 +31,7 @@ const EmblemsList = () => {
                     </li>
                   ))}
                 </ul>
+                <DeleteEmblem id={id}/>
               </li>
             ));
           }}

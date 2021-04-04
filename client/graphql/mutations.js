@@ -130,4 +130,11 @@ export default {
       }
     }
   `,
+  DELETE_EMBLEM: gql`
+    mutation deleteEmblem($id: ID!) {
+      deleteEmblem(id: $id) {
+        id
+      }
+    }
+  `
 };
