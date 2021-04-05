@@ -7,6 +7,7 @@ import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
 import GodAbodeDetail from "../detail/GodAbodeDetail/GodAbodeDetail";
 import Emblems from "../detail/GodEmblemDetail.js/Emblems";
+import EmblemSelect from "../detail/GodEmblemDetail.js/EmblemSelect";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -15,6 +16,7 @@ import Mutations from "../../graphql/mutations";
 const { UPDATE_GOD_NAME } = Mutations;
 
 const GodDetail = (props) => {
+  
   return (
     <Query query={FETCH_GOD} variables={{ id: props.match.params.godId }}>
       {({ loading, error, data }) => {
@@ -54,21 +56,7 @@ const GodDetail = (props) => {
                 <Emblems emblems={emblems} />
                 {/* <EditEmblem id={id} emblems={emblems} /> */}
               </div>
-              {/* <ul className="god-emblems">
-                <h3>Emblems: </h3>
-                {emblems.length ? (
-                  emblems.map(({ id, name }) => (
-                    <li key={id}>
-                      <Link to={`/emblems/${id}`}>
-                        <h4 className="name">{name}</h4>
-                      </Link>
-                    </li>
-                  ))
-                ) : (
-                  <h4 key="no-emblem">&nbsp; None</h4>
-                )}
-              </ul>
-              <Emblems emblems={emblems} /> */}
+              <EmblemSelect />
               <h2 id="relatives-label">Relatives: </h2>
               <section className="god-family">
                 {family.map((famgroup, i) =>
