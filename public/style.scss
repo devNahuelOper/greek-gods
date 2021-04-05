@@ -58,15 +58,6 @@ ul {
   }
 }
 
-.description {
-  width: 70%;
-}
-
-.generation {
-  font-size: 12px;
-  font-weight: bold;
-}
-
 .add-icon {
   float: right;
 }
@@ -89,8 +80,6 @@ input[type="radio"] {
   margin-left: 4px;
 }
 
-
-
 .name-input {
   border: none;
   box-shadow: 0px 0px 3px 1px grey;
@@ -102,6 +91,15 @@ input[type="radio"] {
 
 .name {
   display: inline-block;
+}
+
+.description {
+  width: 70%;
+}
+
+.generation {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .nav-links {
@@ -158,11 +156,17 @@ input[type="radio"] {
 }
 
 #domain-wrap {
+  position: relative;
   display: flex;
   align-items: center;
   .edit-tools {
     margin-top: 0;
     margin-bottom: 5px;
+  }
+  form {
+    position: absolute;
+    right: -20px;
+    top: 10px;
   }
 }
 
@@ -170,10 +174,13 @@ input[type="radio"] {
   padding: 16px 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  max-width: 1604px;
   h3 {
     font-size: 1.2em;
   }
   li {
+    white-space: nowrap;
     margin: 0 40px;
   }
   .edit-tools {
@@ -265,7 +272,8 @@ input[type="radio"] {
 }
 
 .MuiInput-underline {
-  &:before, &:after {
+  &:before,
+  &:after {
     border-bottom: 0 !important;
   }
 }
