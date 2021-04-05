@@ -189,6 +189,12 @@ input[type="radio"] {
   }
 }
 
+#emblem-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .god-emblems {
   list-style: none;
   display: flex;

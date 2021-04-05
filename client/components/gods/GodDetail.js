@@ -49,7 +49,12 @@ const GodDetail = (props) => {
                 <h3>Domains:</h3>
                 <EditDomain id={id} domains={domains} />
               </div>
-              <ul className="god-emblems">
+              <div id="emblem-wrap">
+                <h3>Emblems: </h3>
+                <Emblems emblems={emblems} />
+                {/* <EditEmblem id={id} emblems={emblems} /> */}
+              </div>
+              {/* <ul className="god-emblems">
                 <h3>Emblems: </h3>
                 {emblems.length ? (
                   emblems.map(({ id, name }) => (
@@ -63,7 +68,7 @@ const GodDetail = (props) => {
                   <h4 key="no-emblem">&nbsp; None</h4>
                 )}
               </ul>
-              <Emblems />
+              <Emblems emblems={emblems} /> */}
               <h2 id="relatives-label">Relatives: </h2>
               <section className="god-family">
                 {family.map((famgroup, i) =>
