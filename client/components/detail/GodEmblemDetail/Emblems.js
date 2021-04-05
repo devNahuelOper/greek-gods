@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Emblems = ({ emblems }) => {
   return (
     <ul className="god-emblems">
+      <h3>Emblems: </h3>
       {emblems.length ? (
         emblems.map(({ id, name }) => (
           <li key={id}>

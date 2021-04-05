@@ -12,20 +12,13 @@ const FETCH_EMBLEMS = gql`
   }
 `;
 
-const EmblemSelect = () => {
-  const selectRef = useRef(null);
-  console.log(selectRef);
-
-  const onChange = (e) => {
-    // console.log(selectRef.current.select.getValue());
-    console.log(selectRef.current.getProp("value"));
-  }
+const EmblemSelect = ({ onChange }) => {
   return (
     <Query query={FETCH_EMBLEMS}>
       {({ loading, error, data }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>{error}</p>;
-        // console.log(data);
+
         const options = data.emblems.map((emblem) => ({
           value: emblem.id,
           label: emblem.name,
@@ -38,10 +31,8 @@ const EmblemSelect = () => {
               isLoading={loading}
               isClearable
               isSearchable
-              isMulti
               placeholder="Select Emblem to add..."
               options={options}
-              ref={selectRef}
               onChange={onChange}
             />
           </React.Fragment>

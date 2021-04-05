@@ -28,13 +28,20 @@ class EditEmblem extends React.Component {
 
   render() {
     const { adding, deleting } = this.state;
-    const { id } = this.props;
+    const { id, emblems } = this.props;
 
     if (adding) {
       return (
         <ClickAwayListener onClickAway={() => this.setState({ adding: false })}>
-          <AddEmblem id={id} adding={adding}/>
+          <AddEmblem id={id} emblems={emblems} />
         </ClickAwayListener>
+      );
+    } else {
+      return (
+        <div id="emblem-wrap">
+          <Emblems emblems={emblems} />
+          <EditTools onClick={this.handleAdd} title="Add Emblem" icon="plus" />
+        </div>
       );
     }
   }

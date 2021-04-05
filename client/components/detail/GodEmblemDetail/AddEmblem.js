@@ -12,14 +12,13 @@ class AddEmblem extends React.Component {
     this.state = {
       emblems: this.props.emblems || [],
       emblemId: null,
-      newEmblem: "",
     };
   }
 
   fieldUpdate(field) {
     return (e) => {
-      this.setState({ [field]: e.target.value });
-      console.log(e.target.value);
+      this.setState({ [field]: e.value });
+      console.log(this.state.emblemId);
     };
   }
 
@@ -36,7 +35,7 @@ class AddEmblem extends React.Component {
       },
     }).then((emb) => {
       let emblem = emb.data.addGodEmblem.emblem;
-      this.setState({ emblemId: emblem.id, emblems: [...emblems, emblem] });
+      this.setState({ emblems: [...emblems, emblem] });
     });
   }
 
@@ -54,11 +53,10 @@ class AddEmblem extends React.Component {
                 id="emblemForm"
                 onSubmit={(e) => this.addEmblem(e, addGodEmblem)}
               >
-                <EmblemSelect
-                  emblemId={emblemId}
-                  onChange={this.fieldUpdate("emblemId")}
-                />
-                <button className="update-btn" type="submit">Add Emblem</button>
+                <EmblemSelect onChange={this.fieldUpdate("emblemId")} />
+                <button className="update-btn" type="submit">
+                  Add Emblem
+                </button>
               </form>
             );
           }}

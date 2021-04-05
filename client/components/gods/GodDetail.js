@@ -6,8 +6,9 @@ import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
 import GodAbodeDetail from "../detail/GodAbodeDetail/GodAbodeDetail";
-import Emblems from "../detail/GodEmblemDetail.js/Emblems";
-import EmblemSelect from "../detail/GodEmblemDetail.js/EmblemSelect";
+import Emblems from "../detail/GodEmblemDetail/Emblems";
+import EmblemSelect from "../detail/GodEmblemDetail/EmblemSelect";
+import EditEmblem from "../detail/GodEmblemDetail/EditEmblem";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -16,7 +17,7 @@ import Mutations from "../../graphql/mutations";
 const { UPDATE_GOD_NAME } = Mutations;
 
 const GodDetail = (props) => {
-  
+
   return (
     <Query query={FETCH_GOD} variables={{ id: props.match.params.godId }}>
       {({ loading, error, data }) => {
@@ -51,12 +52,7 @@ const GodDetail = (props) => {
                 <h3>Domains:</h3>
                 <EditDomain id={id} domains={domains} />
               </div>
-              <div id="emblem-wrap">
-                <h3>Emblems: </h3>
-                <Emblems emblems={emblems} />
-                {/* <EditEmblem id={id} emblems={emblems} /> */}
-              </div>
-              <EmblemSelect />
+              <EditEmblem id={id} emblems={emblems} />
               <h2 id="relatives-label">Relatives: </h2>
               <section className="god-family">
                 {family.map((famgroup, i) =>
