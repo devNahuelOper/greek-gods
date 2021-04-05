@@ -32,7 +32,14 @@ class EditEmblem extends React.Component {
 
     if (adding) {
       return (
-        <ClickAwayListener onClickAway={() => this.setState({ adding: false })}>
+        <ClickAwayListener onClickAway={(e) => {
+          if (
+            !emblemForm.contains(e.target) &&
+            !e.target.classList.contains("select__option")
+          ) {
+            this.setState({ adding: false });
+          }
+        }}>
           <AddEmblem id={id} emblems={emblems} />
         </ClickAwayListener>
       );

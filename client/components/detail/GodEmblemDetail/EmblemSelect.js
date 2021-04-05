@@ -13,6 +13,10 @@ const FETCH_EMBLEMS = gql`
 `;
 
 const EmblemSelect = ({ onChange }) => {
+  const selectRef = useRef(null);
+  console.log(selectRef);
+  window.ref = selectRef;
+
   return (
     <Query query={FETCH_EMBLEMS}>
       {({ loading, error, data }) => {
@@ -33,6 +37,7 @@ const EmblemSelect = ({ onChange }) => {
               isSearchable
               placeholder="Select Emblem to add..."
               options={options}
+              ref={selectRef}
               onChange={onChange}
             />
           </React.Fragment>
