@@ -18,7 +18,7 @@ class AddEmblem extends React.Component {
   fieldUpdate(field) {
     return (e) => {
       this.setState({ [field]: e.value });
-      // console.log(this.state.emblemId);
+      console.log(e);
     };
   }
 
@@ -53,7 +53,7 @@ class AddEmblem extends React.Component {
                 id="emblemForm"
                 onSubmit={(e) => this.addEmblem(e, addGodEmblem)}
               >
-                <EmblemSelect onChange={this.fieldUpdate("emblemId")} />
+                <EmblemSelect godEmblems={emblems} onChange={this.fieldUpdate("emblemId")} />
                 <button className="update-btn" type="submit">
                   Add Emblem
                 </button>

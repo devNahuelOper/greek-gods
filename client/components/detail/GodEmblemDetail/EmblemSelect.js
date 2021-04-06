@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Select from "react-select";
+import _ from "lodash";
 
 const FETCH_EMBLEMS = gql`
   query FetchEmblems {
@@ -12,10 +13,10 @@ const FETCH_EMBLEMS = gql`
   }
 `;
 
-const EmblemSelect = ({ onChange }) => {
+const EmblemSelect = ({ godEmblems, onChange }) => {
   const selectRef = useRef(null);
-  console.log(selectRef);
-  window.ref = selectRef;
+  // console.log(selectRef);
+  // window.ref = selectRef;
 
   return (
     <Query query={FETCH_EMBLEMS}>
@@ -23,7 +24,9 @@ const EmblemSelect = ({ onChange }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>{error}</p>;
 
-        const options = data.emblems.map((emblem) => ({
+        const emblems = _.pullAllBy(data.emblems, godEmblems, 'id');
+
+        const options = emblems.map((emblem) => ({
           value: emblem.id,
           label: emblem.name,
         }));
