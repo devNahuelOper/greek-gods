@@ -4,6 +4,7 @@ import { FaPencilAlt, FaPlus, FaMinus } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 
 const EditTools = ({ onClick, title, icon = "pencil" }) => {
+  // console.log(props);
   return (
     <div className="edit-tools" onClick={onClick} title={title}>
       <IconContext.Provider value={{ className: `custom-icon ${icon}` }}>

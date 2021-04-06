@@ -4,6 +4,7 @@ import EditTools from "../EditTools";
 import Emblems from "./Emblems";
 import { ClickAwayListener } from "@material-ui/core";
 import AddEmblem from "./AddEmblem";
+import RemoveEmblem from "./RemoveEmblem";
 
 class EditEmblem extends React.Component {
   constructor(props) {
@@ -43,11 +44,18 @@ class EditEmblem extends React.Component {
           <AddEmblem id={id} emblems={emblems} />
         </ClickAwayListener>
       );
+    } else if (deleting) {
+      return (
+        <ClickAwayListener onClickAway={() => this.setState({ deleting: false })}>
+          <RemoveEmblem id={id} emblems={emblems}/>
+        </ClickAwayListener>
+      )
     } else {
       return (
         <div id="emblem-wrap">
           <Emblems emblems={emblems} />
           <EditTools onClick={this.handleAdd} title="Add Emblem" icon="plus" />
+          <EditTools onClick={this.handleDelete} title="Remove Emblem" icon="minus" />
         </div>
       );
     }

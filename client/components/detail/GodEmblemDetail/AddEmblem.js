@@ -18,7 +18,7 @@ class AddEmblem extends React.Component {
   fieldUpdate(field) {
     return (e) => {
       this.setState({ [field]: e.value });
-      console.log(e);
+      // console.log(e);
     };
   }
 
