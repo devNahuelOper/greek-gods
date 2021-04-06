@@ -18,13 +18,13 @@ class AddEmblem extends React.Component {
   fieldUpdate(field) {
     return (e) => {
       this.setState({ [field]: e.value });
-      console.log(this.state.emblemId);
+      // console.log(this.state.emblemId);
     };
   }
 
   addEmblem(e, addGodEmblem) {
     e.preventDefault();
-    let { emblems, emblemId } = this.state;
+    let { emblemId } = this.state;
 
     if (!emblemId) return;
 
@@ -34,10 +34,8 @@ class AddEmblem extends React.Component {
         emblemId,
       },
     }).then((emb) => {
-      console.log('emb: ', emb);
-      let emblem = emb.data.addGodEmblem.emblem;
-      console.log('emblem: ',emblem);
-      this.setState({ emblems: [...emblems, emblem] });
+      let emblems = emb.data.addGodEmblem.emblems;
+      this.setState({ emblems });
     });
   }
 

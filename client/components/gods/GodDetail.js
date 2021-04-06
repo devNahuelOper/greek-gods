@@ -6,8 +6,6 @@ import TypeDetail from "../detail/TypeDetail";
 import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
 import GodAbodeDetail from "../detail/GodAbodeDetail/GodAbodeDetail";
-import Emblems from "../detail/GodEmblemDetail/Emblems";
-import EmblemSelect from "../detail/GodEmblemDetail/EmblemSelect";
 import EditEmblem from "../detail/GodEmblemDetail/EditEmblem";
 
 import Queries from "../../graphql/queries";
