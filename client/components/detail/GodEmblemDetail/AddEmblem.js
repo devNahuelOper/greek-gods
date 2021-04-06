@@ -34,7 +34,9 @@ class AddEmblem extends React.Component {
         emblemId,
       },
     }).then((emb) => {
+      console.log('emb: ', emb);
       let emblem = emb.data.addGodEmblem.emblem;
+      console.log('emblem: ',emblem);
       this.setState({ emblems: [...emblems, emblem] });
     });
   }

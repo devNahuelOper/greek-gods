@@ -197,6 +197,9 @@ input[type="radio"] {
   position: relative;
   display: flex;
   align-items: center;
+  .custom-icon {
+    margin-bottom: 6px;
+  }
 }
 
 .god-emblems {
