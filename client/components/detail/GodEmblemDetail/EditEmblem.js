@@ -1,5 +1,4 @@
 import React from "react";
-import { Mutation } from "react-apollo";
 import EditTools from "../EditTools";
 import Emblems from "./Emblems";
 import { ClickAwayListener } from "@material-ui/core";

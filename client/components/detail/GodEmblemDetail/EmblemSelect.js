@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Select from "react-select";
@@ -30,6 +30,7 @@ const EmblemSelect = ({ godEmblems, onChange }) => {
           value: emblem.id,
           label: emblem.name,
         }));
+
         return (
           <React.Fragment>
             <Select
