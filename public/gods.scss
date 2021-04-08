@@ -16,6 +16,13 @@ $relativeBlue: #0a639d;
   background-image: url("../public/assets/gods.png");
 }
 
+.nav-links.gods {
+    // margin-bottom: 20px;
+  // background: radial-gradient(#a29d8e, antiquewhite);
+  background: linear-gradient(0deg, #757c8c, #cabdac, antiquewhite);
+  padding: 5px 65px;
+}
+
 .god-index {
   display: grid;
   grid-template-columns: repeat(3, auto);

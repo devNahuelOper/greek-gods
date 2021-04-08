@@ -78,10 +78,7 @@ input[type="radio"] {
 .nav-links {
   display: flex;
   justify-content: space-between;
-  // margin-bottom: 20px;
-  // background: radial-gradient(#a29d8e, antiquewhite);
-  background: linear-gradient(0deg, #757c8c, #cabdac, antiquewhite);
-  padding: 5px 65px;
+
   a {
     text-transform: capitalize;
     font-size: 1.5em;

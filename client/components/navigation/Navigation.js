@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   const location = useLocation().pathname;
   const paths = ["/gods", "/abodes", "/emblems", "/new"];
+  
   return (
-    <nav className="nav-links">
+    <nav className={`nav-links ${location.replace('/', '')}`}>
       {paths.map((path) => (
         <Link key={path} to={path} className={path == location ? "current-page" : ""}>
           {path.slice(1)}
