@@ -1,4 +1,14 @@
-$hades: #db5d3b;
+$aphrodite: #cea599;
+$apollo: #81b4da;
+$artemis: #c58a44;
+$athena: #f4d475;
+$demeter: #bca579;
+$hades: #d93306;
+$hera: #8a1b2c;
+$heracles: #702007;
+$leto: #c7be95;
+$persephone: #6217be;
+$poseidon: #1d6475;
 $relativeBlue: #0a639d;
 
 .god-index {
@@ -25,6 +35,46 @@ $relativeBlue: #0a639d;
   }
 }
 
+.aphrodite {
+  color: $aphrodite;
+}
+
+.apollo {
+  color: $apollo;
+}
+
+.artemis {
+  color: $artemis;
+}
+
+.athena {
+  color: $athena;
+}
+
+.demeter {
+  color: $demeter;
+}
+
 .hades {
   color: $hades;
+}
+
+.hera {
+  color: $hera;
+}
+
+.heracles {
+  color: $heracles;
+}
+
+.leto {
+  color: $leto;
+}
+
+.persephone {
+  color: $persephone;
+}
+
+.poseidon {
+  color: $poseidon;
 }
