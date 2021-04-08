@@ -1,0 +1,30 @@
+$hades: #db5d3b;
+$relativeBlue: #0a639d;
+
+.god-index {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  ul {
+    margin-block-start: 0 !important;
+    padding-inline-start: 0 !important;
+  }
+  li {
+    list-style-type: none;
+    // border-bottom: solid 1px grey;
+    padding: 10px 0;
+  }
+  a {
+    text-decoration: none;
+    color: #030303;
+    font-weight: bold;
+    font-size: 20px;
+    &:hover {
+      color: #7a7a7a;
+      transition: 0.5s;
+    }
+  }
+}
+
+.hades {
+  color: $hades;
+}

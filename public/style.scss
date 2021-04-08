@@ -9,6 +9,7 @@ $deleteRedHover: #f83333;
 $tiDelete: #ebc4c4;
 $tiDeleteHover: #ed9393;
 
+
 body {
   background-color: #f3f3f3;
   padding: 10px 100px;
@@ -37,26 +38,9 @@ ul {
 
 .outer {
   padding: 40px 0;
-  ul {
-    margin-block-start: 0 !important;
-    padding-inline-start: 0 !important;
-  }
-  li {
-    list-style-type: none;
-    border-bottom: solid 1px grey;
-    padding: 10px 0;
-  }
-  a {
-    text-decoration: none;
-    color: #030303;
-    font-weight: bold;
-    font-size: 20px;
-    &:hover {
-      color: #7a7a7a;
-      transition: 0.5s;
-    }
-  }
 }
+
+
 
 .add-icon {
   float: right;
