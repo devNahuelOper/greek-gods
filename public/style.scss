@@ -9,7 +9,6 @@ $deleteRedHover: #f83333;
 $tiDelete: #ebc4c4;
 $tiDeleteHover: #ed9393;
 
-
 body {
   background-color: #f3f3f3;
   padding: 10px 100px;
@@ -35,12 +34,6 @@ ul {
   padding: 0;
   list-style: none;
 }
-
-.outer {
-  padding: 40px 0;
-}
-
-
 
 .add-icon {
   float: right;
@@ -77,10 +70,6 @@ input[type="radio"] {
   display: inline-block;
 }
 
-.description {
-  width: 70%;
-}
-
 .generation {
   font-size: 12px;
   font-weight: bold;
@@ -89,8 +78,13 @@ input[type="radio"] {
 .nav-links {
   display: flex;
   justify-content: space-between;
+  // margin-bottom: 20px;
+  // background: radial-gradient(#a29d8e, antiquewhite);
+  background: linear-gradient(0deg, #757c8c, #cabdac, antiquewhite);
+  padding: 5px 65px;
   a {
     text-transform: capitalize;
+    font-size: 1.5em;
     &:visited {
       color: unset;
     }
