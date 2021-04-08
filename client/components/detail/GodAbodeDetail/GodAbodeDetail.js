@@ -78,7 +78,7 @@ class GodAbodeDetail extends React.Component {
               <h3 className="god-abode">{abode.name}</h3>
             </Link>
           ) : (
-            <h3>Unknown</h3>
+            <h3 className="unknown">Unknown</h3>
           )}
           <EditTools onClick={this.handleEdit} title="Edit Abode"/>
         </div>

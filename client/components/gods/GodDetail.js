@@ -7,6 +7,7 @@ import DescriptionDetail from "../detail/DescriptionDetail";
 import EditDomain from "../detail/DomainsDetail/EditDomain";
 import GodAbodeDetail from "../detail/GodAbodeDetail/GodAbodeDetail";
 import EditEmblem from "../detail/GodEmblemDetail/EditEmblem";
+import Relatives from "../detail/RelativesDetail/Relatives";
 
 import Queries from "../../graphql/queries";
 const { FETCH_GOD } = Queries;
@@ -15,7 +16,6 @@ import Mutations from "../../graphql/mutations";
 const { UPDATE_GOD_NAME } = Mutations;
 
 const GodDetail = (props) => {
-
   return (
     <Query query={FETCH_GOD} variables={{ id: props.match.params.godId }}>
       {({ loading, error, data }) => {
@@ -35,9 +35,6 @@ const GodDetail = (props) => {
           siblings,
         } = data.god;
 
-        const family = [parents, children, siblings];
-        const famStrings = ["Parents", "Children", "Siblings"];
-
         return (
           data.god && (
             <div className="detail">
@@ -45,7 +42,7 @@ const GodDetail = (props) => {
               <br />
               <TypeDetail id={id} type={type} />
               <DescriptionDetail id={id} description={description} />
-              <GodAbodeDetail id={id} abode={abode} />
+              <GodAbodeDetail id={id} abode={abode || ""} />
               <div id="domain-wrap">
                 <h3>Domains:</h3>
                 <EditDomain id={id} domains={domains} />
@@ -53,25 +50,9 @@ const GodDetail = (props) => {
               <EditEmblem id={id} emblems={emblems} />
               <h2 id="relatives-label">Relatives: </h2>
               <section className="god-family">
-                {family.map((famgroup, i) =>
-                  Boolean(famgroup.length) ? (
-                    <ul key={i}>
-                      {famStrings[i]}:
-                      {famgroup.map((relative) => (
-                        <li key={relative.id}>
-                          <Link to={`/gods/${relative.id}`}>
-                            <h4>{relative.name}</h4>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <h4 key={`none${i}`}>
-                      {" "}
-                      {famStrings[i]}: <br /> None
-                    </h4>
-                  )
-                )}
+                <Relatives relativeType={parents} tag="Parents" />
+                <Relatives relativeType={children} tag="Children" />
+                <Relatives relativeType={siblings} tag="Siblings" />
               </section>
             </div>
           )

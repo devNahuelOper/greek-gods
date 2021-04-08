@@ -63,7 +63,7 @@ class NameDetail extends React.Component {
     } else {
       return (
         <div>
-          <h1 className="name">{name}</h1>
+          <h1 className={`name ${name}`}>{name}</h1>
           <EditTools onClick={this.handleEdit} title="Edit Name" />
         </div>
       );

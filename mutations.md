@@ -41,7 +41,7 @@ query fetchGodRelatives {
 }
 
 query fetchGod {
-  god(id: "5c98e94dd5a3ca0de10a1501") {
+  god(id: "5c98f193d5a3ca0de10a15c1") {
     ...FindGod
     type
     description
