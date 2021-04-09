@@ -101,12 +101,6 @@ input[type="radio"] {
   margin-right: 12px;
 }
 
-.god-name {
-  color: $relativeBlue;
-  &:hover {
-    filter: brightness(2);
-  }
-}
 
 .abode-name {
   color: $abodeRed;
@@ -202,20 +196,6 @@ input[type="radio"] {
   }
 }
 
-#relatives-label {
-  padding-top: 20px;
-  display: block;
-}
-
-.god-family {
-  // padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  a {
-    color: $relativeBlue;
-  }
-}
 
 .detail {
   padding: 40px 0;
@@ -303,6 +283,7 @@ input[type="radio"] {
   cursor: pointer;
   display: inline;
   vertical-align: super;
+  height: fit-content;
 }
 
 .custom-icon {

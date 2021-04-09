@@ -57,15 +57,37 @@ $relativeBlue: #0a639d;
   }
 }
 
-// .description {
-//   width: 70%;
-// }
+.god-family {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 120px;
+  width: 50%;
+  a {
+    color: $relativeBlue;
+  }
+}
+
+#relatives-label {
+  padding-top: 20px;
+  display: block;
+}
 
 .relative-group {
   display: flex;
+  max-width: 150px;
   .plus,
   .minus {
     margin-top: 5px;
+  }
+  .x-tool {
+    vertical-align: middle;
+  }
+}
+
+.god-name {
+  color: $relativeBlue;
+  &:hover {
+    filter: brightness(2);
   }
 }
 
