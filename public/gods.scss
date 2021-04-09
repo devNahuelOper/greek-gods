@@ -1,18 +1,18 @@
 $aphrodite: #cea599;
 $apollo: #81b4da;
-$artemis: #c58a44;
+$artemis: #22784a;
 $athena: #f4d475;
-$demeter: #bca579;
+$demeter: #b49862;
 $hades: #d93306;
 $hera: #8a1b2c;
 $heracles: #702007;
-$leto: #c7be95;
+$leto: #d59256;
 $persephone: #6217be;
 $poseidon: #1d6475;
 $relativeBlue: #0a639d;
 
 .outer {
-  padding: 60px;
+  padding: 40px;
   background-image: url("../public/assets/gods.png");
 }
 
@@ -29,8 +29,8 @@ $relativeBlue: #0a639d;
   column-gap: 80px;
   box-sizing: border-box;
   padding: 20px;  
-  // backdrop-filter: contrast(0.3);
-  backdrop-filter: sepia(1.5) contrast(0.4) blur(3px) brightness(1.1);
+  // backdrop-filter: sepia(1.5) contrast(0.4) blur(3px) brightness(1.1);
+  backdrop-filter: sepia(1.7) contrast(0.1) blur(1px) brightness(1.5);
   ul {
     margin-block-start: 0 !important;
     padding-inline-start: 0 !important;
