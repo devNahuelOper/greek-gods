@@ -50,9 +50,9 @@ const GodDetail = (props) => {
               <EditEmblem id={id} emblems={emblems} />
               <h2 id="relatives-label">Relatives: </h2>
               <section className="god-family">
-                <Relatives relativeType={parents} tag="Parents" />
-                <Relatives relativeType={children} tag="Children" />
-                <Relatives relativeType={siblings} tag="Siblings" />
+                <Relatives godId={id} relativeType={parents} tag="Parents" />
+                <Relatives godId={id} relativeType={children} tag="Children" />
+                <Relatives godId={id} relativeType={siblings} tag="Siblings" />
               </section>
             </div>
           )

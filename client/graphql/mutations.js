@@ -99,16 +99,8 @@ export default {
     }
   `,
   ADD_GOD_RELATIVE: gql`
-    mutation addGodRelative(
-      $godId: ID!
-      $relativeId: ID!
-      $relationship: String!
-    ) {
-      addGodRelative(
-        godId: $godId
-        relativeId: $relativeId
-        relationship: $relationship
-      ) {
+    mutation addGodRelative($godId: ID!, $relativeId: ID!, $relationship: String!) {
+      addGodRelative(godId: $godId, relativeId: $relativeId, relationship: $relationship) {
         id
         name
         parents {
@@ -126,26 +118,22 @@ export default {
       }
     }
   `,
-  // REMOVE_GOD_RELATIVE: gql`
-  //   mutation removeGodRelative($godId, ID!, $relativeId: ID!, $relationship: String!) {
-  //     removeGodRelative(godId: $godId, relativeId: $relativeId, relationship: $relationship) {
-  //       id
-  //       name
-  //       parents {
-  //         id
-  //         name
-  //       }
-  //       children {
-  //         id
-  //         name 
-  //       }
-  //       siblings {
-  //         id
-  //         name
-  //       }
-  //     }
-  //   }
-  // `,
+  REMOVE_GOD_RELATIVE: gql`
+    mutation removeGodRelative($godId: ID!, $relativeId: ID!, $relationship: String!) {
+      removeGodRelative(godId: $godId, relativeId: $relativeId, relationship: $relationship) {
+        id
+        parents {
+          id
+        }
+        children {
+          id
+        }
+        siblings {
+          id
+        }
+      }
+    }
+  `,
   NEW_EMBLEM: gql`
     mutation NewEmblem($name: String) {
       newEmblem(name: $name) {
