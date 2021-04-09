@@ -16,19 +16,17 @@ $relativeBlue: #0a639d;
   background-image: url("../public/assets/gods.png");
 }
 
-.nav-links.gods {
-    // margin-bottom: 20px;
-  // background: radial-gradient(#a29d8e, antiquewhite);
-  background: linear-gradient(0deg, #757c8c, #cabdac, antiquewhite);
-  padding: 5px 65px;
-}
+// .nav-links.gods {
+//   background: linear-gradient(0deg, #757c8c, #cabdac, antiquewhite);
+//   padding: 5px 65px;
+// }
 
 .god-index {
   display: grid;
   grid-template-columns: repeat(3, auto);
   column-gap: 80px;
   box-sizing: border-box;
-  padding: 20px;  
+  padding: 20px;
   // backdrop-filter: sepia(1.5) contrast(0.4) blur(3px) brightness(1.1);
   backdrop-filter: sepia(1.7) contrast(0.1) blur(1px) brightness(1.5);
   ul {
@@ -62,6 +60,14 @@ $relativeBlue: #0a639d;
 // .description {
 //   width: 70%;
 // }
+
+.relative-group {
+  display: flex;
+  .plus,
+  .minus {
+    margin-top: 5px;
+  }
+}
 
 .aphrodite {
   color: $aphrodite;

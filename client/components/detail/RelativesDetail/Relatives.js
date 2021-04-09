@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import EditTools from "../EditTools";
 
 const Relatives = ({ relativeType, tag }) => {
+  const [adding, setAdding] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  const handleAdd = () => setAdding(true);
+  const handleDelete = () => setDeleting(true);
+
+  const title = tag.replace(/s$|ren$/, "");
   return (
-    <React.Fragment>
+    <div className="relative-group">
       {relativeType.length ? (
         <ul>
           {tag}:
@@ -20,7 +28,9 @@ const Relatives = ({ relativeType, tag }) => {
           {tag}: <br /> None
         </h4>
       )}
-    </React.Fragment>
+      <EditTools onClick={handleAdd} title={`Add ${title}`} icon="plus"/>
+      <EditTools onClick={handleDelete} title={`Remove ${title}`} icon="minus"/>
+    </div>
   );
 };
 
