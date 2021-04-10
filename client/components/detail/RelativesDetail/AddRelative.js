@@ -62,7 +62,7 @@ class AddRelative extends React.Component {
                     relationship={relationship}
                     onChange={this.fieldUpdate("relativeId")}
                   />
-                  <button className="update-btn" type="submit">Add {relationship}</button>
+                  {/* <button className="update-btn" type="submit">Add {relationship}</button> */}
                 </form>
               );
             }}

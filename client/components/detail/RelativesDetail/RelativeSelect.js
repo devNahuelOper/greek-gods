@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Select from "react-select";
@@ -14,6 +14,16 @@ const FETCH_GODS = gql`
 `;
 
 const RelativeSelect = ({ godId, relatives, relationship, onChange }) => {
+  const relativeRef = useRef(null);
+  
+  const clearSelection = () => {
+    try {
+      setTimeout(() => relativeRef.current.select.setValue(""), 0);
+    } catch {
+      return;
+    }
+  }
+
   return (
     <Query query={FETCH_GODS}>
       {({ loading, error, data }) => {
@@ -39,8 +49,12 @@ const RelativeSelect = ({ godId, relatives, relationship, onChange }) => {
               isSearchable
               placeholder={`Select ${relationship} to add...`}
               options={options}
+              ref={relativeRef}
               onChange={onChange}
             />
+            <button className="update-btn" type="submit" onClick={clearSelection}>
+              Add {relationship}
+            </button>
           </React.Fragment>
         );
       }}
