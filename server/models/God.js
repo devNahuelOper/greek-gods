@@ -70,16 +70,16 @@ GodSchema.statics.addRelative = function (godId, relativeId, relationship) {
 
     switch (relationship) {
       case "parent":
-        god.parents.push(relative);
-        relative.children.push(god);
+        god.parents.addToSet(relative);
+        relative.children.addToSet(god);
         break;
       case "child":
-        god.children.push(relative);
-        relative.parents.push(god);
+        god.children.addToSet(relative);
+        relative.parents.addToSet(god);
         break;
       case "sibling":
-        god.siblings.push(relative);
-        relative.siblings.push(god);
+        god.siblings.addToSet(relative);
+        relative.siblings.addToSet(god);
         break;
     }
 

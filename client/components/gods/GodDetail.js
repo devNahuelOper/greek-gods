@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import NameDetail from "../detail/NameDetail";
 import TypeDetail from "../detail/TypeDetail";
@@ -41,7 +40,7 @@ const GodDetail = (props) => {
 
         return (
           data.god && (
-            <div className="detail__backdrop" style={backgroundImage}>
+            <div className={`detail__backdrop ${name}__backdrop`} style={backgroundImage}>
               <div className="detail god-detail">
                 <NameDetail id={id} name={name} mutation={UPDATE_GOD_NAME} />
 
