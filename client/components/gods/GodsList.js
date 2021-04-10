@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
+import _ from "lodash";
 
 import Queries from "../../graphql/queries";
 import DeleteGod from "./DeleteGod";
@@ -14,8 +15,9 @@ const GodsList = () => {
           {({ loading, error, data }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error</p>;
-
-            return data.gods.map(({ id, name, description }) => (
+            
+            const gods = _.sortBy(data.gods, (god) => god.name);
+            return gods.map(({ id, name, description }) => (
               <li key={id}>
                 <Link to={`/gods/${id}`}>
                   <h1 className={`name ${name}`}>{name}</h1>
