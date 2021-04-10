@@ -15,7 +15,7 @@ const FETCH_EMBLEMS = gql`
 
 const EmblemSelect = ({ godEmblems, onChange }) => {
   const selectRef = useRef(null);
-  // console.log(selectRef);
+  console.log(selectRef);
   // window.ref = selectRef;
 
   return (

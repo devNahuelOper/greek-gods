@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Select from "react-select";

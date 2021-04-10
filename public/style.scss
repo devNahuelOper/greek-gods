@@ -357,6 +357,7 @@ input[type="radio"] {
   padding: 4px;
   border-radius: 4px;
   outline: 0;
+  text-transform: capitalize;
   &:hover {
     filter: contrast(1.1);
   }

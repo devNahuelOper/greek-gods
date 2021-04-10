@@ -16,7 +16,10 @@ class AddRelative extends React.Component {
   }
 
   fieldUpdate(field) {
-    return (e) => this.setState({ [field]: e.value });
+    return (e) => {
+      console.log(e);
+      this.setState({ [field]: e.value });
+    }
   }
 
   addRelative(e, addGodRelative) {
@@ -35,7 +38,6 @@ class AddRelative extends React.Component {
       },
     }).then((god) => {
       let newRelatives = god.data.addGodRelative[`${tag}`];
-      console.log(newRelatives);
       handleAddRelative(newRelatives);
     });
   }
@@ -60,6 +62,7 @@ class AddRelative extends React.Component {
                     relationship={relationship}
                     onChange={this.fieldUpdate("relativeId")}
                   />
+                  <button className="update-btn" type="submit">Add {relationship}</button>
                 </form>
               );
             }}
