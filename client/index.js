@@ -22,6 +22,9 @@ const client = new ApolloClient({
 })
 
 const Root = () => {
+  document.body.classList.add(
+    `${document.location.hash.replace(/^#\/|(?<=\w)\/.*$/g, "")}_body`
+  );
   return (
     <ApolloProvider client={client}>
       <HashRouter>

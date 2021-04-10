@@ -101,6 +101,17 @@ input[type="radio"] {
   margin-right: 12px;
 }
 
+.detail {
+  padding: 40px 0;
+  em {
+    text-transform: capitalize;
+    color: $darkGrey;
+  }
+  h2,
+  h4 {
+    display: inline;
+  }
+}
 
 .abode-name {
   color: $abodeRed;
@@ -193,29 +204,6 @@ input[type="radio"] {
   margin-left: 8px;
   &:hover {
     filter: brightness(2);
-  }
-}
-
-
-.detail {
-  padding: 40px 0;
-  // div {
-  //   margin-top: 10px;
-  //   display: inline-block;
-  // }
-  // .basic-single {
-  //   display: block;
-  //   div {
-  //     display: block;
-  //   }
-  // }
-  em {
-    text-transform: capitalize;
-    color: $darkGrey;
-  }
-  h2,
-  h4 {
-    display: inline;
   }
 }
 
