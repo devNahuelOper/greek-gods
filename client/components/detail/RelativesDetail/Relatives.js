@@ -27,7 +27,7 @@ const Relatives = ({ godId, relativeType, tag }) => {
             {tag}:
             {relatives.map(({ id, name }) => (
               <li key={id}>
-                <Link to={`/gods/${id}`}>
+                <Link to={`/gods/${id}`} title={name}>
                   <h4 className={`name ${name}`}>{name}</h4>
                 </Link>
                 {deleting && (

@@ -12,7 +12,6 @@ $persephone: #6217be;
 $poseidon: #1d6475;
 $relativeBlue: #0a639d;
 
-
 .gods_body {
   padding: 10px 20px;
   .nav-links {
@@ -102,6 +101,14 @@ $relativeBlue: #0a639d;
   display: flex;
   max-width: 150px;
   position: relative;
+  // background: #ffffff52;
+  // border-radius: 8px;
+  // box-shadow: 0px 0px 14px 14px #ffffff52;
+  // padding: 8px;
+  // li {
+  //   box-shadow: 0px 0px 8px 8px #ffffff52;
+  //   backdrop-filter: brightness(5.5);
+  // }
   .plus,
   .minus {
     margin-top: 5px;
@@ -127,8 +134,6 @@ $relativeBlue: #0a639d;
     filter: brightness(2);
   }
 }
-
-
 
 .aphrodite {
   color: $aphrodite;
