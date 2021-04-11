@@ -67,10 +67,11 @@ class EmblemCreate extends React.Component {
             <form onSubmit={(e) => this.handleSubmit(e, newEmblem)}>
               <input
                 value={name}
+                className="name-input"
                 placeholder="Name"
                 onChange={this.update("name")}
               />
-              <button type="submit">Create Emblem</button>
+              <button className="update-btn" type="submit">Create Emblem</button>
             </form>
             <p>{message}</p>
           </div>

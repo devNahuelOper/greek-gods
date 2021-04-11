@@ -67,18 +67,22 @@ class AbodeCreate extends React.Component {
       >
         {(newAbode, { data }) => (
           <div>
-            <form onSubmit={e => this.handleSubmit(e, newAbode)}>
+            <form onSubmit={(e) => this.handleSubmit(e, newAbode)}>
               <input
                 value={name}
+                className="name-input"
                 placeholder="Name"
                 onChange={this.update("name")}
               />
               <input
                 value={coordinates}
+                className="name-input"
                 placeholder="Coordinates"
                 onChange={this.update("coordinates")}
               />
-              <button type="submit">Create Abode</button>
+              <button className="update-btn" type="submit">
+                Create Abode
+              </button>
               <p>{message}</p>
             </form>
           </div>
