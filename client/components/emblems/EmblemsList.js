@@ -8,7 +8,7 @@ const { FETCH_EMBLEMS } = Queries;
 
 const EmblemsList = () => {
   return (
-    <div className="outer">
+    <div className="outer emblem-index">
       <ul className="emblems-list">
         <Query query={FETCH_EMBLEMS}>
           {({ loading, error, data }) => {

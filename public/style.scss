@@ -113,7 +113,7 @@ input[type="radio"] {
   }
 }
 
-.abode-index {
+.abode-index, .emblem-index {
   padding: 40px 8px !important;
   background-image: none !important;
 }
@@ -121,6 +121,13 @@ input[type="radio"] {
 .abode-list {
   display: grid;
   grid-template-columns: repeat(3, auto);
+  row-gap: 120px;
+  column-gap: 120px;
+}
+
+.emblems-list {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
   row-gap: 120px;
   column-gap: 120px;
 }
