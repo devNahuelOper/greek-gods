@@ -7,7 +7,7 @@ const { FETCH_ABODES } = Queries;
 
 const AbodesList = () => {
   return (
-    <div className="outer">
+    <div className="outer abode-index">
       <ul className="abode-list">
         <Query query={FETCH_ABODES}>
           {({ loading, error, data }) => {

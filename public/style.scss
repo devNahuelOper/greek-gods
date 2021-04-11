@@ -113,8 +113,21 @@ input[type="radio"] {
   }
 }
 
+.abode-index {
+  padding: 40px 8px !important;
+  background-image: none !important;
+}
+
+.abode-list {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  row-gap: 120px;
+  column-gap: 120px;
+}
+
 .abode-name {
   color: $abodeRed;
+  font-size: 1.5em;
   &:hover {
     filter: brightness(2);
   }
