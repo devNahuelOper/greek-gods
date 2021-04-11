@@ -73,20 +73,47 @@ class GodCreate extends React.Component {
             <form onSubmit={(e) => this.handleSubmit(e, newGod)}>
               <input
                 type="text"
+                className="name-input"
                 value={name}
                 placeholder="Name"
                 onChange={this.update("name")}
               />
-              <select value={type} onChange={this.update("type")}>
+              {/* <select value={type} onChange={this.update("type")}>
                 <option value="god">God</option>
                 <option value="goddess">Goddess</option>
-              </select>
+              </select> */}
+              <fieldset className="god-type">
+                <label htmlFor="god">
+                  God
+                  <input
+                    type="radio"
+                    id="god"
+                    name="godtype"
+                    value="god"
+                    checked={type === "god"}
+                    onChange={this.update("type")}
+                  />
+                </label>
+                <label>
+                  Goddess
+                  <input
+                    type="radio"
+                    id="goddess"
+                    name="godtype"
+                    value="goddess"
+                    checked={type === "goddess"}
+                    onChange={this.update("type")}
+                  />
+                </label>
+              </fieldset>
               <textarea
                 value={description}
                 placeholder="Description"
                 onChange={this.update("description")}
               />
-              <button type="submit">Create God</button>
+              <button className="update-btn" type="submit">
+                Create God
+              </button>
             </form>
             <p>{message}</p>
           </div>

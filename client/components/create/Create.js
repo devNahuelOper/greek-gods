@@ -34,7 +34,7 @@ class Create extends React.Component {
 
     return (
       <div className="styled-select slate">
-        <select onChange={this.updateSelection}>
+        <select onChange={this.updateSelection} className="select-create">
           <option value="god">God</option>
           <option value="emblem">Emblem</option>
           <option value="abode">Abode</option>
