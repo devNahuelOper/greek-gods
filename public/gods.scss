@@ -3,6 +3,7 @@ $apollo: #81b4da;
 $artemis: #22784a;
 $athena: #f4d475;
 $darkGrey: #6a6a6a;
+$emblemGold: #895b07;
 $demeter: #b49862;
 $hades: #d93306;
 $hera: #8a1b2c;
@@ -24,11 +25,6 @@ $relativeBlue: #0a639d;
   padding: 40px;
   background-image: url("./assets/gods.png");
 }
-
-// .nav-links.gods {
-//   background: linear-gradient(0deg, #757c8c, #cabdac, antiquewhite);
-//   padding: 5px 65px;
-// }
 
 .god-index {
   display: grid;
@@ -81,6 +77,65 @@ $relativeBlue: #0a639d;
   }
 }
 
+.god-abode {
+  margin: 0 10px;
+  color: $abodeRed;
+  margin-left: 8px;
+  &:hover {
+    filter: brightness(2);
+  }
+}
+
+#domain-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  .edit-tools {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  form {
+    position: absolute;
+    right: -20px;
+    top: 10px;
+  }
+}
+
+.domains {
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1604px;
+  h3 {
+    font-size: 1.2em;
+  }
+  li {
+    white-space: nowrap;
+    margin: 0 40px;
+  }
+  .edit-tools {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+}
+
+.god-emblems {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  li {
+    margin: 0 30px;
+  }
+  a {
+    color: $emblemGold;
+    &:hover {
+      filter: brightness(2);
+    }
+  }
+}
+
 .god-family {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -119,6 +174,8 @@ $relativeBlue: #0a639d;
   right: -80%;
   margin-top: 12px;
 }
+
+// NAMES
 
 .god-name {
   color: $relativeBlue;

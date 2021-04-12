@@ -16,6 +16,8 @@ $tiDeleteHover: #ed9393;
   background-position: $position;
 }
 
+// GLOBAL -------------------
+
 body {
   background-color: #f3f3f3;
   padding: 10px 100px;
@@ -42,10 +44,6 @@ ul {
   list-style: none;
 }
 
-.add-icon {
-  float: right;
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -64,24 +62,9 @@ input[type="radio"] {
   margin-left: 4px;
 }
 
-.name-input {
-  border: none;
-  box-shadow: 0px 0px 3px 1px grey;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 16px;
-}
+// -------------------------- GLOBAL
 
-.name {
-  display: inline-block;
-}
-
-.generation {
-  font-size: 12px;
-  font-weight: bold;
-}
-
+// NAVIGATION/LISTS ----------------------
 .nav-links {
   display: flex;
   justify-content: space-between;
@@ -104,6 +87,61 @@ input[type="radio"] {
   }
 }
 
+.abode-index,
+.emblem-index {
+  padding: 40px 8px !important;
+  background-image: none !important;
+}
+
+.abode-list {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  row-gap: 120px;
+  column-gap: 120px;
+}
+
+.abode-gods {
+  padding: 80px 0;
+}
+
+.gods-list {
+  display: flex;
+  li {
+    border-bottom: none;
+    margin-right: 2em;
+  }
+}
+
+.emblems-list {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  row-gap: 120px;
+  column-gap: 120px;
+  .emblem-name {
+    margin-bottom: 12px;
+  }
+}
+
+// -------------------- NAVIGATION/LISTS
+
+.name-input {
+  border: none;
+  box-shadow: 0px 0px 3px 1px grey;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.name {
+  display: inline-block;
+}
+
+.generation {
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .none {
   margin-right: 12px;
 }
@@ -118,26 +156,6 @@ input[type="radio"] {
   h4 {
     display: inline;
   }
-}
-
-.abode-index,
-.emblem-index {
-  padding: 40px 8px !important;
-  background-image: none !important;
-}
-
-.abode-list {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  row-gap: 120px;
-  column-gap: 120px;
-}
-
-.emblems-list {
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-  row-gap: 120px;
-  column-gap: 120px;
 }
 
 .abode-name {
@@ -155,48 +173,6 @@ input[type="radio"] {
   }
 }
 
-.gods-list {
-  display: flex;
-  li {
-    border-bottom: none;
-    margin-right: 2em;
-  }
-}
-
-#domain-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  .edit-tools {
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
-  form {
-    position: absolute;
-    right: -20px;
-    top: 10px;
-  }
-}
-
-.domains {
-  padding: 16px 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1604px;
-  h3 {
-    font-size: 1.2em;
-  }
-  li {
-    white-space: nowrap;
-    margin: 0 40px;
-  }
-  .edit-tools {
-    align-self: flex-start;
-    margin-top: 8px;
-  }
-}
-
 #emblemForm {
   max-width: 360px;
 }
@@ -210,30 +186,7 @@ input[type="radio"] {
   }
 }
 
-.god-emblems {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  li {
-    margin: 0 30px;
-  }
-  a {
-    color: $emblemGold;
-    &:hover {
-      filter: brightness(2);
-    }
-  }
-}
 
-.god-abode {
-  margin: 0 10px;
-  color: $abodeRed;
-  margin-left: 8px;
-  &:hover {
-    filter: brightness(2);
-  }
-}
 
 .basic-single {
   max-width: 360px;
@@ -329,16 +282,6 @@ input[type="radio"] {
   fill: $tiDelete;
   &:hover {
     fill: $tiDeleteHover;
-  }
-}
-
-.abode-gods {
-  padding: 80px 0;
-}
-
-.emblems-list {
-  .emblem-name {
-    margin-bottom: 12px;
   }
 }
 
