@@ -6,6 +6,7 @@ const {
   GraphQLID,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLUnionType,
 } = graphql;
 
 const GodType = require("./god_type");
@@ -15,6 +16,16 @@ const AbodeType = require("./abode_type");
 const God = mongoose.model("god");
 const Emblem = mongoose.model("emblem");
 const Abode = mongoose.model("abode");
+
+const resolveType = (data) => {
+  if (data.name) return [GodType, AbodeType, EmblemType];
+};
+
+const SearchableType = new GraphQLUnionType({
+  name: "SearchableType",
+  types: [GodType, AbodeType, EmblemType],
+  resolveType,
+});
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -56,6 +67,21 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: new GraphQLNonNull(GraphQLID) } },
       resolve(parentValue, { id }) {
         return Abode.findById(id);
+      },
+    },
+    search: {
+      type: new GraphQLList(SearchableType),
+      args: {
+        text: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      resolve(root, args) {
+        const text = args.text;
+        const DATA = [...God.find({}), ...Abode.find({}), ...Emblem.find({})];
+
+        return DATA.filter((d) => {
+          const searchableProperty = d.name;
+          return searchableProperty.indexOf(text) !== -1;
+        });
       },
     },
   }),

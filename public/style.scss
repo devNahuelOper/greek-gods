@@ -9,6 +9,13 @@ $deleteRedHover: #f83333;
 $tiDelete: #ebc4c4;
 $tiDeleteHover: #ed9393;
 
+@mixin background-image($url, $size, $position: center, $repeat: no-repeat) {
+  background-image: url($url);
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $position;
+}
+
 body {
   background-color: #f3f3f3;
   padding: 10px 100px;
@@ -355,6 +362,13 @@ input[type="radio"] {
 
 .select-create {
   margin-bottom: 1em;
+}
+
+.styled-select {
+  height: 700px;
+  @include background-image("./assets/mtolympus.png", cover, center -100px);
+  padding: 120px;
+  border-radius: 8px;
 }
 
 textarea {
