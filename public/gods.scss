@@ -1,3 +1,4 @@
+$abodeRed: #a72806;
 $aphrodite: #cea599;
 $apollo: #81b4da;
 $artemis: #22784a;
@@ -77,12 +78,54 @@ $relativeBlue: #0a639d;
   }
 }
 
+.god-type {
+  border: 0;
+  margin: 0;
+  padding: 8px 0;
+  label {
+    margin-right: 8px;
+  }
+}
+
+#description {
+  display: flex;
+  .custom-icon {
+    margin-top: 10px;
+  }
+}
+
+#description-update {
+  display: block;
+  max-width: 740px;
+  form {
+    max-width: 740px;
+  }
+  textarea {
+    height: 175px;
+  }
+}
+
 .god-abode {
   margin: 0 10px;
   color: $abodeRed;
   margin-left: 8px;
   &:hover {
     filter: brightness(2);
+  }
+}
+
+#god-abode-detail {
+  display: flex;
+  align-items: center;
+  .edit-tools {
+    align-self: flex-start;
+    margin-top: 0;
+  }
+}
+
+#abodeForm {
+  .update-btn {
+    width: 167px;
   }
 }
 
@@ -133,6 +176,19 @@ $relativeBlue: #0a639d;
     &:hover {
       filter: brightness(2);
     }
+  }
+}
+
+#emblemForm {
+  max-width: 360px;
+}
+
+#emblem-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  .custom-icon {
+    margin-bottom: 6px;
   }
 }
 

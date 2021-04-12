@@ -16,8 +16,7 @@ $tiDeleteHover: #ed9393;
   background-position: $position;
 }
 
-// GLOBAL -------------------
-
+// GLOBAL -------------------------
 body {
   background-color: #f3f3f3;
   padding: 10px 100px;
@@ -62,7 +61,22 @@ input[type="radio"] {
   margin-left: 4px;
 }
 
-// -------------------------- GLOBAL
+textarea {
+  font-family: inherit;
+  outline: 0;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 0px 3px 1px grey;
+  padding: 8px;
+}
+
+#label,
+#select {
+  font-family: fantasy;
+}
+#select {
+  background-color: white;
+}
 
 // NAVIGATION/LISTS ----------------------
 .nav-links {
@@ -102,6 +116,10 @@ input[type="radio"] {
 
 .abode-gods {
   padding: 80px 0;
+  align-items: center;
+  li {
+    margin: 0 1em;
+  }
 }
 
 .gods-list {
@@ -122,30 +140,7 @@ input[type="radio"] {
   }
 }
 
-// -------------------- NAVIGATION/LISTS
-
-.name-input {
-  border: none;
-  box-shadow: 0px 0px 3px 1px grey;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 16px;
-}
-
-.name {
-  display: inline-block;
-}
-
-.generation {
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.none {
-  margin-right: 12px;
-}
-
+// DETAIL ------------------------------
 .detail {
   padding: 40px 0;
   em {
@@ -156,79 +151,6 @@ input[type="radio"] {
   h4 {
     display: inline;
   }
-}
-
-.abode-name {
-  color: $abodeRed;
-  font-size: 1.5em;
-  &:hover {
-    filter: brightness(2);
-  }
-}
-
-.emblem-name {
-  color: $emblemGold;
-  &:hover {
-    filter: brightness(2);
-  }
-}
-
-#emblemForm {
-  max-width: 360px;
-}
-
-#emblem-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  .custom-icon {
-    margin-bottom: 6px;
-  }
-}
-
-
-
-.basic-single {
-  max-width: 360px;
-  * {
-    margin: unset;
-  }
-}
-
-#abodeForm {
-  .update-btn {
-    width: 167px;
-  }
-}
-
-.MuiInputBase-root {
-  color: rgb(130 130 130);
-  background: white;
-  border-radius: 4px;
-  box-sizing: border-box;
-  padding: 0 12px;
-  &:before {
-    border-bottom: 0;
-  }
-}
-
-.MuiInput-underline {
-  &:before,
-  &:after {
-    border-bottom: 0 !important;
-  }
-}
-
-.MuiSelect-icon {
-  top: -4px !important;
-}
-
-#label,
-#select {
-  font-family: fantasy;
-}
-#select {
-  background-color: white;
 }
 
 .abode-detail {
@@ -247,6 +169,45 @@ input[type="radio"] {
   }
 }
 
+// NAME --------------------------------
+.name-input {
+  border: none;
+  box-shadow: 0px 0px 3px 1px grey;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.name {
+  display: inline-block;
+}
+
+.abode-name {
+  color: $abodeRed;
+  font-size: 1.5em;
+  &:hover {
+    filter: brightness(2);
+  }
+}
+
+.emblem-name {
+  color: $emblemGold;
+  &:hover {
+    filter: brightness(2);
+  }
+}
+
+.none {
+  margin-right: 12px;
+}
+
+.unknown {
+  margin: 0 8px;
+}
+// -------------------------------- NAME
+
+// ICONS/BUTTONS -----------------------
 .edit-tools {
   font-size: 10px;
   cursor: pointer;
@@ -285,53 +246,6 @@ input[type="radio"] {
   }
 }
 
-#description {
-  display: flex;
-  .custom-icon {
-    margin-top: 10px;
-  }
-}
-
-#description-update {
-  display: block;
-  max-width: 740px;
-  form {
-    max-width: 740px;
-  }
-  textarea {
-    height: 175px;
-  }
-}
-
-.select-create {
-  margin-bottom: 1em;
-}
-
-.styled-select {
-  height: 700px;
-  @include background-image("./assets/mtolympus.png", cover, center -100px);
-  padding: 120px;
-  border-radius: 8px;
-}
-
-textarea {
-  font-family: inherit;
-  outline: 0;
-  border-radius: 4px;
-  border: none;
-  box-shadow: 0px 0px 3px 1px grey;
-  padding: 8px;
-}
-
-.god-type {
-  border: 0;
-  margin: 0;
-  padding: 8px 0;
-  label {
-    margin-right: 8px;
-  }
-}
-
 .update-btn {
   font-family: fantasy;
   border: none;
@@ -345,15 +259,43 @@ textarea {
   }
 }
 
-#god-abode-detail {
-  display: flex;
-  align-items: center;
-  .edit-tools {
-    align-self: flex-start;
-    margin-top: 0;
+// SELECT & @material-ui ------------------
+.basic-single {
+  max-width: 360px;
+  * {
+    margin: unset;
   }
 }
 
-.unknown {
-  margin: 0 8px;
+.select-create {
+  margin-bottom: 1em;
+}
+
+.MuiInputBase-root {
+  color: rgb(130 130 130);
+  background: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  &:before {
+    border-bottom: 0;
+  }
+}
+
+.MuiInput-underline {
+  &:before,
+  &:after {
+    border-bottom: 0 !important;
+  }
+}
+
+.MuiSelect-icon {
+  top: -4px !important;
+}
+
+.styled-select {
+  height: 700px;
+  @include background-image("./assets/mtolympus.png", cover, center -100px);
+  padding: 120px;
+  border-radius: 8px;
 }

@@ -50,11 +50,6 @@ class Create extends React.Component {
           options={options}
           onChange={(e) => this.updateSelection(e)}
         />
-        {/* <select onChange={this.updateSelection} className="select-create">
-          <option value="god">God</option>
-          <option value="emblem">Emblem</option>
-          <option value="abode">Abode</option>
-        </select> */}
         <h4>Create a new {createType}</h4>
         {form}
       </div>
