@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 
@@ -14,7 +15,9 @@ const AbodesList = () => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>{error}</p>;
 
-            return data.abodes.map(({ id, name, coordinates, gods }) => (
+            const abodes = _.sortBy(data.abodes, (abode) => abode.name);
+            
+            return abodes.map(({ id, name, coordinates, gods }) => (
               <li key={id}>
                 <Link to={`/abodes/${id}`}>
                   <h4 className="name abode-name">{name}</h4>

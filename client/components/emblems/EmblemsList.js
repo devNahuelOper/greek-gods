@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import DeleteEmblem from "./DeleteEmblem";
@@ -15,7 +16,9 @@ const EmblemsList = () => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>{error}</p>;
 
-            return data.emblems.map(({ id, name, gods }) => (
+            const emblems = _.sortBy(data.emblems, (emblem) => emblem.name);
+            
+            return emblems.map(({ id, name, gods }) => (
               <li key={id}>
                 <Link to={`/emblems/${id}`}>
                   <h3 className="name emblem-name">{name}</h3>
